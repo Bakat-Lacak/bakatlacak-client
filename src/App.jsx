@@ -1,16 +1,20 @@
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
 
   return (
     <>
-      <div className='bg-gray-900 flex items-center justify-center min-h-screen'>
-        <div className="bg-gray-800 border-t border-gray-600 shadow rounded-lg max-w-lg w-full p-6">
-            <h4 className='text-white text-2xl'>Hello React</h4>
-            <p className='text-lg text-gray-400 leading-relaxed'>A JavaScript library for building user interfaces</p>
-        </div>
-    </div>
+      <Router>
+        <Routes >
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+        </Routes>
+      </Router>
     </>
   )
 }
