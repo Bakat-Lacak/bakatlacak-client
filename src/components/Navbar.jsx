@@ -1,21 +1,33 @@
 import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import logo from "../assets/logo.png";
-
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check the user's login status when the component mounts
     const token = localStorage.getItem("token");
-    setIsLogin(!!token);
+    const userLoggedIn = Boolean(token);
+    setLoggedIn(userLoggedIn);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    window.location.href = "/";
+  };
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
+  const handleProfile = () => {
+    window.location.href = "/profile"
+  }
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    // Implement your search logic here
   };
   
 
@@ -38,13 +50,28 @@ function Navbar() {
                   >
                     About
                   </a>
-                  {!isLogin && (
+                  {isLoggedIn ? (
+                <button
+                  onClick={handleLogout}
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={handleLogin}
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
+                >
+                  Login
+                </button>
+              )}
+                {isLoggedIn && (
                   <button
-                    onClick={() => (window.location.href = "/login")}
-                    className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
-                  >
-                    Login/Register
-                  </button>
+                  onClick={handleProfile}
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
+                >
+                  Profile
+                </button>
                 )}
                 </div>
               </div>
@@ -136,22 +163,29 @@ function Navbar() {
                 >
                   About
                 </a>
-                {isLogin && (
-                  <button
-                    onClick={() => (window.location.href = "/profile")}
-                    className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
-                  >
-                    Profile
-                  </button>
-                )}
-                {!isLogin && (
+                {isLoggedIn && (
                   <div
-                    onClick={() => (window.location.href = "/login")}
+                    onClick={handleProfile}
                     className="text-mint block px-3 py-2 rounded-md text-base font-medium"
                   >
-                    Login/Register
+                    Profile
                   </div>
                 )}
+                {isLoggedIn ? (
+                <div
+                  onClick={handleLogout}
+                  className="text-mint block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Logout
+                </div>
+              ) : (
+                <div
+                  onClick={handleLogin}
+                  className="text-mint block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Login
+                </div>
+              )}
               </div>
               
             </div>
