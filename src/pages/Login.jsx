@@ -1,6 +1,6 @@
 // import { login } from "../fetching/auth";
 import { useState } from "react";
-import image from "../../public/login-page.jpg";
+import image from "../assets/login-page.jpg";
 import Swal from "sweetalert2";
 import { useStore } from "../modules/store";
 import { useNavigate } from "react-router-dom";
@@ -14,12 +14,12 @@ export default function Login() {
 
   async function handleLogin() {
     try {
-      const { access_token, role } = await login({ email, password });
+      const { id, access_token, role } = await login({ email, password });
       Swal.fire({
         title: "Login Success",
         icon: "success",
       });
-      setUser({ email, password, access_token, role });
+      setUser({ id, email, password, access_token, role });
       navigate("/");
     } catch (error) {
       Swal.fire({
