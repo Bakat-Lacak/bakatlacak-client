@@ -24,7 +24,7 @@ export async function register(params) {
       first_name,
       last_name,
       phone_number,
-      birth_dat,
+      birth_date,
       gender,
       role,
     } = params;
@@ -37,7 +37,7 @@ export async function register(params) {
         first_name,
         last_name,
         phone_number,
-        birth_dat,
+        birth_date,
         gender,
         role,
       },
