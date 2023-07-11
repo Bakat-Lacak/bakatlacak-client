@@ -28,10 +28,22 @@ export default function UserProfilePage() {
   }
 
   return (
-    <div>
-      <p>User Profiles Page</p>
-      {JSON.stringify(profile)}
-      {JSON.stringify(user)}
-    </div>
+    <>
+      <div className="flex">
+        <div>
+          <ul>
+            <li>Basic Info</li>
+            <li>Education</li>
+            <li>Experience</li>
+          </ul>
+        </div>
+        <div>
+          <p>Email</p>
+        </div>
+        {/* <p>User Profiles Page</p>
+        {JSON.stringify(profile)}
+        {JSON.stringify(user)} */}
+      </div>
+    </>
   );
 }
