@@ -36,7 +36,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
@@ -91,7 +91,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
@@ -146,7 +146,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
@@ -201,7 +201,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
@@ -256,7 +256,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
@@ -311,7 +311,7 @@ class JobListing extends Component {
                     <span className="m-1 ml-0 inline-block text-yellow-500">
                       Node JS
                     </span>
-                    <span className="m-1 ml-0 inline-block text-yellow-500">
+                    <span className="m-1 ml-0 inline-block text-yellow`-500">
                       Postman
                     </span>
                     <span className="m-1 ml-0 inline-block text-lime-500">
