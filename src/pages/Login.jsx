@@ -17,6 +17,8 @@ export default function Login() {
       Swal.fire({
         title: "Login Success",
         icon: "success",
+        showConfirmButton: false,
+        timer: 1500
       });
       setUser({ id, email, password, access_token, role });
       navigate("/");
@@ -24,6 +26,8 @@ export default function Login() {
       Swal.fire({
         title: "Login Fail",
         icon: "error",
+        showConfirmButton: false,
+        timer: 1500
       });
     }
   }
