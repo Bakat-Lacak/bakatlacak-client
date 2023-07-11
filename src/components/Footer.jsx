@@ -20,7 +20,7 @@ class Footer extends Component {
             <div className="flex flex-wrap text-left lg:text-left backgro">
               <div className="w-full lg:w-6/12 px-4">
                 <h4 className="text-3xl fonat-semibold text-blueGray-700">
-                  Bakat Lacak
+                  BakatLacak
                 </h4>
                 <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
                   Temukan pekerjaan kamu sekarang.
@@ -167,7 +167,7 @@ class Footer extends Component {
                     href="https://www.creative-tim.com/product/notus-js"
                     className="text-blueGray-500 hover:text-gray-800"
                   />{" "}
-                  Bakat Lacak JS by
+                  BakatLacak by
                   <a
                     href="https://www.creative-tim.com?ref=njs-profile"
                     className="text-blueGray-500 hover:text-blueGray-800"
