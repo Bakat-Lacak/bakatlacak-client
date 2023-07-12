@@ -7,11 +7,20 @@ const userStore = (set) => ({
     set(() => ({ user: newData }));
   },
 });
+const companyStore = (set) => ({
+  company: {},
+  setCompany: (newData) => {
+    set(() => ({ company: newData }));
+  },
+})
 
 export const useStore = create(
   persist(
     (...a) => ({
       ...userStore(...a),
+    }),
+    (...a)=> ({
+      ...companyStore(...a),
     }),
     { name: "bound-store" }
   )
