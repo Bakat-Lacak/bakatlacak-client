@@ -169,10 +169,8 @@ export default function UserProfilePage() {
           </TableContainer>
         </Box>
         )}
-      </Flex>
-      <Flex className="justify-end">
+{showEducation && (
       <Box width="80%" className="pr-20 pt-10">
-        {showEducation && (
 
           <TableContainer className="border-4 border-dashed" alt="Education">
             <Table>
@@ -193,43 +191,8 @@ export default function UserProfilePage() {
                     </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td width="25%">Last name</Td>
+                  <Td width="25%">Description</Td>
                   <Td><Editable defaultValue={user.last_name}>
-                    <EditablePreview />
-                    <EditableInput />
-                    </Editable></Td>
-                </Tr>
-                <Tr>
-                  <Td width="25%">E-mail</Td>
-                  <Td><Editable defaultValue={user.email}>
-                    <EditablePreview />
-                    <EditableInput />
-                    </Editable></Td>
-                </Tr>
-                <Tr>
-                  <Td width="25%">Phone Number</Td>
-                  <Td><Editable defaultValue={user.phone_number}>
-                    <EditablePreview />
-                    <EditableInput />
-                    </Editable></Td>
-                </Tr>
-                <Tr>
-                  <Td width="25%">Birth date</Td>
-                  <Td><Editable defaultValue={user.birth_date}>
-                    <EditablePreview />
-                    <EditableInput />
-                    </Editable></Td>
-                </Tr>
-                <Tr>
-                  <Td width="25%">Gender</Td>
-                  <Td><Editable defaultValue={user.gender}>
-                    <EditablePreview />
-                    <EditableInput />
-                    </Editable></Td>
-                </Tr>
-                <Tr>
-                  <Td width="25%">Address</Td>
-                  <Td><Editable defaultValue={user.gender}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
@@ -237,12 +200,10 @@ export default function UserProfilePage() {
               </Tbody>
             </Table>
           </TableContainer>
-        )}
         </Box>
-      </Flex>
-      <Flex className="justify-end">
+        )}
+                {showExperience && (
       <Box width="80%" className="pr-20 pt-10">
-        {showExperience && (
 
           <TableContainer className="border-4 border-dashed" alt="Education">
             <Table>
@@ -307,8 +268,8 @@ export default function UserProfilePage() {
               </Tbody>
             </Table>
           </TableContainer>
-        )}
         </Box>
+        )}
       </Flex>
     </>
   );
