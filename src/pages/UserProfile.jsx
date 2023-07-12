@@ -31,6 +31,9 @@ export default function UserProfilePage() {
   const [user, setUser] = useState({});
   const [isLoading, setLoading] = useState(false);
   const loggedUser = useStore((state) => state.user);
+  const [showBasicInfo, setShowBasicInfo] = useState(true);
+  const [showEducation, setShowEducation] = useState(false);
+  const [showExperience, setShowExperience] = useState(false);
 
   async function fetchProfile() {
     const dataUser = await getUser(loggedUser.id);
@@ -51,6 +54,22 @@ export default function UserProfilePage() {
     );
   }
 
+  const handleBasicInfoClick = () => {
+    setShowBasicInfo(true)
+    setShowEducation(false)
+    setShowExperience(false)
+  }
+  const handleEducationClick = () => {
+    setShowBasicInfo(false)
+    setShowEducation(true)
+    setShowExperience(false)
+  }
+  const handleExperienceClick = () => {
+    setShowBasicInfo(false)
+    setShowEducation(false)
+    setShowExperience(true)
+  }
+
   return (
     <>
       <Flex>
@@ -58,21 +77,21 @@ export default function UserProfilePage() {
           <Card>
             <CardBody className="bg-mint bg-opacity-30">
               <Stack divider={<StackDivider />} spacing="1">
-                <Button variant="ghost">
+                <Button variant="ghost" onClick={handleBasicInfoClick}>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Basic Info
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost">
+                <Button variant="ghost" onClick={handleEducationClick}>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Education
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost">
+                <Button variant="ghost" onClick={handleExperienceClick}>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Experience
@@ -83,12 +102,18 @@ export default function UserProfilePage() {
             </CardBody>
           </Card>
         </Box>
+        {showBasicInfo && (
         <Box width="80%" className="pr-20 pt-10">
           <TableContainer className="border-4 border-dashed" alt="basic info">
             <Table>
               <TableCaption>
                 <Button variant="solid">Edit</Button>
               </TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Basic Information</Th>
+                </Tr>
+              </Thead>
               <Tbody>
                 <Tr>
                   <Td width="25%">First name</Td>
@@ -143,14 +168,22 @@ export default function UserProfilePage() {
             </Table>
           </TableContainer>
         </Box>
+        )}
       </Flex>
       <Flex className="justify-end">
       <Box width="80%" className="pr-20 pt-10">
+        {showEducation && (
+
           <TableContainer className="border-4 border-dashed" alt="Education">
             <Table>
               <TableCaption>
                 <Button variant="solid">Edit</Button>
               </TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Education</Th>
+                </Tr>
+              </Thead>
               <Tbody>
                 <Tr>
                   <Td width="25%">School</Td>
@@ -204,6 +237,77 @@ export default function UserProfilePage() {
               </Tbody>
             </Table>
           </TableContainer>
+        )}
+        </Box>
+      </Flex>
+      <Flex className="justify-end">
+      <Box width="80%" className="pr-20 pt-10">
+        {showExperience && (
+
+          <TableContainer className="border-4 border-dashed" alt="Education">
+            <Table>
+              <TableCaption>
+                <Button variant="solid">Edit</Button>
+              </TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Experience</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td width="25%">School</Td>
+                  <Td><Editable defaultValue="School variable">
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Last name</Td>
+                  <Td><Editable defaultValue={user.last_name}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">E-mail</Td>
+                  <Td><Editable defaultValue={user.email}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Phone Number</Td>
+                  <Td><Editable defaultValue={user.phone_number}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Birth date</Td>
+                  <Td><Editable defaultValue={user.birth_date}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Gender</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Address</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        )}
         </Box>
       </Flex>
     </>
