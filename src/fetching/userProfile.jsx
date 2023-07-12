@@ -27,3 +27,11 @@ export async function getUser (id) {
         console.log(err)
     }
 }
+
+export async function getEducation (id) {
+    try {
+
+    } catch (err) {
+        console.log(err)
+    }
+}

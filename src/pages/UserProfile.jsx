@@ -19,7 +19,11 @@ import {
   Tfoot,
   Tr,
   Th,
-  Td
+  Td,
+  Editable,
+  EditableInput,
+  EditableTextarea,
+  EditablePreview
 } from "@chakra-ui/react";
 
 export default function UserProfilePage() {
@@ -80,35 +84,122 @@ export default function UserProfilePage() {
           </Card>
         </Box>
         <Box width="80%" className="pr-20 pt-10">
-          <TableContainer>
+          <TableContainer className="border-4 border-dashed" alt="basic info">
             <Table>
               <TableCaption>
-                <Button>Edit</Button>
+                <Button variant="solid">Edit</Button>
               </TableCaption>
               <Tbody>
                 <Tr>
                   <Td width="25%">First name</Td>
-                  <Td>Variable user</Td>
+                  <Td><Editable defaultValue={user.first_name}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td>Last name</Td>
-                  <Td>Variable user</Td>
+                  <Td width="25%">Last name</Td>
+                  <Td><Editable defaultValue={user.last_name}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td>E-mail</Td>
-                  <Td>Variable user</Td>
+                  <Td width="25%">E-mail</Td>
+                  <Td><Editable defaultValue={user.email}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td>Phone Number</Td>
-                  <Td>Variable user</Td>
+                  <Td width="25%">Phone Number</Td>
+                  <Td><Editable defaultValue={user.phone_number}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td>Birth Date</Td>
-                  <Td>Variable user</Td>
+                  <Td width="25%">Birth date</Td>
+                  <Td><Editable defaultValue={user.birth_date}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
                 <Tr>
-                  <Td>Gender</Td>
-                  <Td>Variable user</Td>
+                  <Td width="25%">Gender</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Address</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </Box>
+      </Flex>
+      <Flex className="justify-end">
+      <Box width="80%" className="pr-20 pt-10">
+          <TableContainer className="border-4 border-dashed" alt="Education">
+            <Table>
+              <TableCaption>
+                <Button variant="solid">Edit</Button>
+              </TableCaption>
+              <Tbody>
+                <Tr>
+                  <Td width="25%">School</Td>
+                  <Td><Editable defaultValue="School variable">
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Last name</Td>
+                  <Td><Editable defaultValue={user.last_name}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">E-mail</Td>
+                  <Td><Editable defaultValue={user.email}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Phone Number</Td>
+                  <Td><Editable defaultValue={user.phone_number}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Birth date</Td>
+                  <Td><Editable defaultValue={user.birth_date}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Gender</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Address</Td>
+                  <Td><Editable defaultValue={user.gender}>
+                    <EditablePreview />
+                    <EditableInput />
+                    </Editable></Td>
                 </Tr>
               </Tbody>
             </Table>
