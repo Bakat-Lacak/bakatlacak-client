@@ -10,7 +10,6 @@ function App() {
 
   return (
     <>
-     
       <Router>
       <Navbar />
         <Routes >
@@ -19,9 +18,7 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/userprofile" element={<UserProfilePage/>}/>
         </Routes>
-       
       </Router>
-      
     </>
   )
 }
