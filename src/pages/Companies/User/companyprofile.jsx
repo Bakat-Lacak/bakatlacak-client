@@ -49,7 +49,8 @@ function CompanyProfileUser() {
     );
   };
 
-  const currentProfile = companyProfiles[currentProfileIndex];
+  const currentProfile = companyProfiles?.[currentProfileIndex];
+
 
   return (
     <ChakraProvider theme={theme}>
@@ -92,7 +93,7 @@ function CompanyProfileUser() {
                 lineHeight={1.2}
                 fontWeight="bold"
               >
-                {currentProfile?.name}
+                {currentProfile?.name || "No name available"}
               </Heading>
               <Spacer mt={2} />
             </Box>
@@ -108,7 +109,7 @@ function CompanyProfileUser() {
                 Company Description
               </Heading>
               <Text color="black" fontSize="l" maxW="100%" lineHeight={1.2}>
-                {currentProfile?.description}
+                {currentProfile?.description || "No description available"}
               </Text>
             </Box>
 
@@ -121,10 +122,13 @@ function CompanyProfileUser() {
                 </CardHeader>
                 <CardBody>
                   <Stack spacing={4}>
-                    <Text>Location: {currentProfile?.location}</Text>
-                    <Text>Field: {currentProfile?.field}</Text>
                     <Text>
-                      Total Employees: {currentProfile?.total_employee}
+                      Location: {currentProfile?.location || "Unknown"}
+                    </Text>
+                    <Text>Field: {currentProfile?.field || "Unknown"}</Text>
+                    <Text>
+                      Total Employees:{" "}
+                      {currentProfile?.total_employee || "Unknown"}
                     </Text>
                   </Stack>
                 </CardBody>

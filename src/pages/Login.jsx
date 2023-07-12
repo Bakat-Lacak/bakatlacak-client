@@ -1,6 +1,6 @@
 // import { login } from "../fetching/auth";
 import { useState } from "react";
-import image from "../../public/login-page.jpg";
+import image from "../assets/login-page.jpg";
 import Swal from "sweetalert2";
 import { useStore } from "../modules/store";
 import { useNavigate } from "react-router-dom";

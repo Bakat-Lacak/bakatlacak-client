@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import logo from "../assets/logo.png";
-
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -19,12 +19,16 @@ function Navbar() {
   };
 
   const handleLogin = () => {
-  window.location.href = "/login"
+    window.location.href = "/login";
   };
 
-  const handleProfile = () => {
-  window.location.href = "/user-profile"
+  const handleCompanyProfile = () => {
+    window.location.href = "/companyprofile"
   }
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
   
 
   return (
@@ -46,33 +50,27 @@ function Navbar() {
                   >
                     About
                   </a>
-                  <a
-                    href="/companyprofile"
-                    className="text-navy px-4 py-2 rounded-md text-sm font-medium"
-                  >
-                    Company Profile
-                  </a>
                   {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
-                  className="justify-self-end bg-navy text-mint font-bold py-2 px-4 rounded-full"
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
                 >
                   Logout
                 </button>
               ) : (
                 <button
                   onClick={handleLogin}
-                  className="items-end bg-navy text-mint font-bold py-2 px-4 rounded-full"
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
                 >
                   Login
                 </button>
               )}
                 {isLoggedIn && (
                   <button
-                  onClick={handleProfile}
+                  onClick={handleCompanyProfile}
                   className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
                 >
-                  Profile
+                  Company Profile
                 </button>
                 )}
                 </div>
@@ -80,6 +78,15 @@ function Navbar() {
             </div>
             <div className="flex items-center">
               
+              <div className="hidden md:block">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  placeholder="Search"
+                  className=" border border-navy rounded-md px-3 py-1.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                />
+              </div>
               
               <div className="mr-2 flex md:hidden">
                 <button
@@ -141,7 +148,15 @@ function Navbar() {
           {(ref) => (
             <div className="lg:hidden" id="mobile-menu">
               <div ref={ref} className="bg-navy px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              
+              <div className="flex">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  placeholder="Search"
+                  className=" border-white rounded-md px-3 py-1.5 text-sm text-gray-900"
+                />
+              </div>
                 <a
                   href="/about"
                   className="text-mint block px-3 py-2 rounded-md text-base font-medium"
@@ -150,10 +165,10 @@ function Navbar() {
                 </a>
                 {isLoggedIn && (
                   <div
-                    onClick={handleProfile}
+                    onClick={handleCompanyProfile}
                     className="text-mint block px-3 py-2 rounded-md text-base font-medium"
                   >
-                    Profile
+                    Company Profile
                   </div>
                 )}
                 {isLoggedIn ? (
