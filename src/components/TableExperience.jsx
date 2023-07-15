@@ -1,6 +1,4 @@
 import { useState, useEffect, React } from "react";
-import { getExperience } from "../fetching/userProfile";
-import { useStore } from "../modules/store";
 import {
     Button,
     ButtonGroup,
@@ -24,26 +22,7 @@ import {
   } from "@chakra-ui/react";
 
 
-export default function TableExperience() {
-    const loggedUser = useStore((state) => state.user);
-    const [experience, setExperience] = useState({})
-    const [isLoading, setLoading] = useState(false);
-
-    async function fetchData() {
-        const dataExperience = await getExperience(loggedUser.id);
-        setExperience(dataExperience);
-    } 
-
-    useEffect(() => {
-        setLoading(true);
-        fetchData();
-      }, []); // 1x render
-
-      if (isLoading) {
-        return (
-          <span className="loading loading-infinity loading-lg flex mx-auto"></span>
-        );
-      }
+export default function TableExperience({experience}) {
 
     return (
         <Box width="80%" className="pr-20 pt-10">
@@ -60,49 +39,49 @@ export default function TableExperience() {
               <Tbody>
                 <Tr>
                   <Td width="25%">Company</Td>
-                  <Td><Editable defaultValue={experience[1].company}>
+                  <Td><Editable defaultValue={experience.company}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">Industry</Td>
-                  <Td><Editable defaultValue={experience[1].industry}>
+                  <Td><Editable defaultValue={experience.industry}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">Department</Td>
-                  <Td><Editable defaultValue={experience[1].department}>
+                  <Td><Editable defaultValue={experience.department}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">Position</Td>
-                  <Td><Editable defaultValue={experience[1].position}>
+                  <Td><Editable defaultValue={experience.position}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">Salary</Td>
-                  <Td><Editable defaultValue={experience[1].salary}>
+                  <Td><Editable defaultValue={experience.salary}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">end_date</Td>
-                  <Td><Editable defaultValue={experience[1].end_date}>
+                  <Td><Editable defaultValue={experience.end_date}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>
                 </Tr>
                 <Tr>
                   <Td width="25%">Start Date</Td>
-                  <Td><Editable defaultValue={experience[1].start_date}>
+                  <Td><Editable defaultValue={experience.start_date}>
                     <EditablePreview />
                     <EditableInput />
                     </Editable></Td>

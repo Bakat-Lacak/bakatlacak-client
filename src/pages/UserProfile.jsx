@@ -73,7 +73,6 @@ export default function UserProfilePage() {
     setShowEducation(false);
     setShowExperience(true);
   };
-  
 
   return (
     <>
@@ -235,84 +234,85 @@ export default function UserProfilePage() {
         )}
         {showExperience && (
           <Box width="80%" className="pr-20 pt-10">
-            <TableContainer className="border-4 border-dashed" alt="Education">
-              <Table>
-                <TableCaption>
-                  <Button variant="solid">Edit</Button>
-                </TableCaption>
-                <Thead>
-                  <Tr>
-                    <Th>Experience</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td width="25%">Company</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].company}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Industry</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].industry}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Department</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].department}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Position</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].position}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Salary</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].salary}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">end_date</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].end_date}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Start Date</Td>
-                    <Td>
-                      <Editable defaultValue={experience[1].start_date}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </TableContainer>
-          </Box>
+          <TableContainer className="border-4 border-dashed" alt="Education">
+            <Table>
+              <TableCaption>
+                <Button variant="solid">Edit</Button>
+              </TableCaption>
+              <Thead>
+                <Tr>
+                  <Th>Experience</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td width="25%">Company</Td>
+                  <Td>
+                    <Editable defaultValue={experience[0].company}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Industry</Td>
+                  <Td>
+                    <Editable defaultValue={experience.industry}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Department</Td>
+                  <Td>
+                    <Editable defaultValue={experience.department}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Position</Td>
+                  <Td>
+                    <Editable defaultValue={experience.position}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Salary</Td>
+                  <Td>
+                    <Editable defaultValue={experience.salary}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">end_date</Td>
+                  <Td>
+                    <Editable defaultValue={experience.end_date}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td width="25%">Start Date</Td>
+                  <Td>
+                    <Editable defaultValue={experience.start_date}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </Box>
+          
         )}
       </Flex>
     </>
