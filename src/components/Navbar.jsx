@@ -18,7 +18,7 @@ function Navbar() {
     localStorage.removeItem("token");
     setLoggedIn(false);
     Swal.fire({
-      title: "Logging out..",
+      title: "Logging out",
       timer: 5000
     });
     location.reload()
