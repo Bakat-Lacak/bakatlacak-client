@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -15,21 +17,24 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setLoggedIn(false);
-    window.location.href = "/";
-  };
-
-  const handleLogin = () => {
-    window.location.href = "/login";
-  };
-
-  const handleCompanyProfile = () => {
-    window.location.href = "/companyprofile"
+    Swal.fire({
+      title: "Logging out..",
+      timer: 5000
+    });
+    location.reload()
   }
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+  const handleLogin = () => {
+    navigate("/login")
   };
-  
+
+  const handleProfile = () => {
+    navigate("/profile")
+  }
+
+  const handleCompany = () => {
+    navigate("/companyprofile")
+  }
 
   return (
     <div>
@@ -50,6 +55,24 @@ function Navbar() {
                   >
                     About
                   </a>
+                  {isLoggedIn && (
+                   
+                    <a
+                      href="/companyprofile"
+                      className="text-navy px-4 py-2 rounded-md text-sm font-medium"
+                      onClick={handleCompany}
+                    >
+                      Company Profile
+                    </a>
+                  )}
+                  {isLoggedIn && (
+                  <a
+                  onClick={handleProfile}
+                  className="text-navy px-4 py-2 rounded-md text-sm font-medium"
+                >
+                  My Profile
+                </a>
+                )}
                   {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
@@ -65,28 +88,10 @@ function Navbar() {
                   Login
                 </button>
               )}
-                {isLoggedIn && (
-                  <button
-                  onClick={handleCompanyProfile}
-                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
-                >
-                  Company Profile
-                </button>
-                )}
                 </div>
               </div>
             </div>
             <div className="flex items-center">
-              
-              <div className="hidden md:block">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  placeholder="Search"
-                  className=" border border-navy rounded-md px-3 py-1.5 text-sm text-black focus:outline-none focus:ring-2 focus:ring-indigo-600"
-                />
-              </div>
               
               <div className="mr-2 flex md:hidden">
                 <button
@@ -148,43 +153,44 @@ function Navbar() {
           {(ref) => (
             <div className="lg:hidden" id="mobile-menu">
               <div ref={ref} className="bg-navy px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <div className="flex">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  placeholder="Search"
-                  className=" border-white rounded-md px-3 py-1.5 text-sm text-gray-900"
-                />
-              </div>
-                <a
-                  href="/about"
-                  className="text-mint block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  About
-                </a>
-                {isLoggedIn && (
-                  <div
-                    onClick={handleCompanyProfile}
-                    className="text-mint block px-3 py-2 rounded-md text-base font-medium"
+              <a
+                    href="/about"
+                    className="text-navy px-4 py-2 rounded-md text-sm font-medium"
                   >
-                    Company Profile
-                  </div>
+                    About
+                  </a>
+                  {isLoggedIn && (
+                   
+                    <a
+                      href="/companyprofile"
+                      className="text-navy px-4 py-2 rounded-md text-sm font-medium"
+                      onClick={handleCompany}
+                    >
+                      Company Profile
+                    </a>
+                  )}
+                  {isLoggedIn && (
+                  <a
+                  onClick={handleProfile}
+                  className="text-navy px-4 py-2 rounded-md text-sm font-medium"
+                >
+                  My Profile
+                </a>
                 )}
-                {isLoggedIn ? (
-                <div
+                  {isLoggedIn ? (
+                <button
                   onClick={handleLogout}
-                  className="text-mint block px-3 py-2 rounded-md text-base font-medium"
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
                 >
                   Logout
-                </div>
+                </button>
               ) : (
-                <div
+                <button
                   onClick={handleLogin}
-                  className="text-mint block px-3 py-2 rounded-md text-base font-medium"
+                  className="bg-navy text-mint font-bold py-2 px-4 rounded-full"
                 >
                   Login
-                </div>
+                </button>
               )}
               </div>
               
