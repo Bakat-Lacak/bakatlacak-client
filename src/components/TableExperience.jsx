@@ -1,4 +1,3 @@
-import { useState, useEffect, React } from "react";
 import {
     Button,
     ButtonGroup,
@@ -19,13 +18,14 @@ import {
     EditableInput,
     EditableTextarea,
     EditablePreview,
+    Box
   } from "@chakra-ui/react";
 
 
 export default function TableExperience({experience}) {
 
     return (
-        <Box width="80%" className="pr-20 pt-10">
+        <Box width="100%" className="pr-20 pt-10">
           <TableContainer className="border-4 border-dashed" alt="Education">
             <Table>
               <TableCaption>
