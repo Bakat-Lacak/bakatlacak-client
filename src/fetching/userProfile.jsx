@@ -28,10 +28,16 @@ export async function getUser (id) {
     }
 }
 
-export async function getEducation (id) {
+export async function getExperience () {
     try {
+        const response = await instance({
+            method:'GET',
+            url: `/experiences/me`
+        })
 
-    } catch (err) {
+        const data = response.data
+        return data;
+    } catch(err) {
         console.log(err)
     }
 }
