@@ -15,6 +15,7 @@ async function getAllCompanyProfile() {
 
 async function getCompanyProfileById (id) {
   try {
+    
     const response = await instance({
       url: `/companyProfile/${id}`,
       method: 'GET',
