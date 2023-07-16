@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
-import JobListing from "./components/JobListing";
+import JobListing from "./pages/JobListing";
 import JobListingDetail from "./pages/JobListingDetail";
 
 function App() {
