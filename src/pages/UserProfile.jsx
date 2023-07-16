@@ -1,11 +1,12 @@
 import { useState, useEffect, React } from "react";
-import { getUserProfileById, getUser } from "../fetching/userProfile";
+import { getUserProfileById, getUser, getEducation } from "../fetching/userProfile";
 import { getExperience } from "../fetching/userProfile";
 import { useStore } from "../modules/store";
 import image from "../assets/example.jpg";
 import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import TableExperience from "../components/TableExperience";
+import TableEducation from "../components/TableEducation";
 import {
   Button,
   ButtonGroup,
@@ -27,12 +28,14 @@ import {
   EditableTextarea,
   EditablePreview,
   VStack,
+  Input
 } from "@chakra-ui/react";
 
 export default function UserProfilePage() {
   const [profile, setProfile] = useState({});
   const [user, setUser] = useState({});
   const [experience, setExperience] = useState({});
+  const [education, setEducation] = useState({})
   const [isLoading, setLoading] = useState(false);
   const loggedUser = useStore((state) => state.user);
   const [showBasicInfo, setShowBasicInfo] = useState(true);
@@ -43,9 +46,11 @@ export default function UserProfilePage() {
     const dataUser = await getUser(loggedUser.id);
     const dataProfile = await getUserProfileById(loggedUser.id);
     const dataExperience = await getExperience(loggedUser.id);
+    const dataEducation = await getEducation(loggedUser.id)
     setProfile(dataProfile);
     setUser(dataUser);
     setExperience(dataExperience);
+    setEducation(dataEducation)
     setLoading(false);
   }
 
@@ -117,71 +122,50 @@ export default function UserProfilePage() {
                 </TableCaption>
                 <Thead>
                   <Tr>
-                    <Th>Basic Information</Th>
+                    <Th fontSize="xl">Basic Information</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   <Tr>
                     <Td width="25%">First name</Td>
                     <Td>
-                      <Editable defaultValue={user.first_name}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={user.first_name} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">Last name</Td>
                     <Td>
-                      <Editable defaultValue={user.last_name}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={user.last_name} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">E-mail</Td>
                     <Td>
-                      <Editable defaultValue={user.email}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="email" defaultValue={user.email} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">Phone Number</Td>
                     <Td>
-                      <Editable defaultValue={user.phone_number}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={user.phone_number} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">Birth date</Td>
                     <Td>
-                      <Editable defaultValue={user.birth_date}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={user.birth_date} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">Gender</Td>
                     <Td>
-                      <Editable defaultValue={user.gender}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={user.gender} />
                     </Td>
                   </Tr>
                   <Tr>
                     <Td width="25%">About Me</Td>
                     <Td>
-                      <Editable defaultValue={profile.about_me}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                    <Input type="text" defaultValue={profile.about_me} />
                     </Td>
                   </Tr>
                   <Tr>
@@ -199,40 +183,11 @@ export default function UserProfilePage() {
           </Box>
         )}
         {showEducation && (
-          <Box width="80%" className="pr-20 pt-10">
-            <TableContainer className="border-4 border-dashed" alt="Education">
-              <Table>
-                <TableCaption>
-                  <Button variant="solid">Edit</Button>
-                </TableCaption>
-                <Thead>
-                  <Tr>
-                    <Th>Education</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td width="25%">School</Td>
-                    <Td>
-                      <Editable defaultValue="School variable">
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Description</Td>
-                    <Td>
-                      <Editable defaultValue={user.last_name}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </TableContainer>
-          </Box>
+          education.map((educ, index) => {
+            return(
+            <TableEducation education={educ} key={index}></TableEducation>
+            )
+          })
         )}
         <VStack flex="1">
           {showExperience &&

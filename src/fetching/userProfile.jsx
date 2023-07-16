@@ -41,3 +41,17 @@ export async function getExperience () {
         console.log(err)
     }
 }
+
+export async function getEducation () {
+    try {
+        const response = await instance({
+            method:'GET',
+            url: `/educations/me`
+        })
+
+        const data = response.data
+        return data;
+    } catch(err) {
+        console.log(err)
+    }
+}
