@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import JobListing from "./pages/JobListing";
-import JobListingDetail from "./pages/JobListingDetail";
+import JobDetail from "./pages/JobDetail";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/job" element={<JobListing />} />
-          <Route path="/job/:id" element={<JobListingDetail />} />
+          <Route path="/job/:id" element={<JobDetail />} />
         </Routes>
       </Router>
     </>
