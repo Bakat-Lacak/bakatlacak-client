@@ -10,7 +10,7 @@ import {
   SimpleGrid,
   HStack,
   Button,
-  Spinner
+  Spinner,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
@@ -18,8 +18,9 @@ import theme from "../../../theme";
 
 function CompanyProfileUser() {
   const [companyProfiles, setCompanyProfiles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetchCompanyProfiles();
@@ -30,39 +31,41 @@ function CompanyProfileUser() {
       setIsLoading(true);
       const data = await getAllCompanyProfile();
       setCompanyProfiles(data);
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (err) {
       console.error("Error fetching company data:", err);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
   if (isLoading) {
     return (
-      <Box
-        h="100vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Box h="100vh" display="flex" alignItems="center" justifyContent="center">
         <Spinner size="4xl" color="navy" />
       </Box>
     );
   }
 
-  
-
-  
-
   return (
     <ChakraProvider theme={theme}>
       <Box pb={8} maxWidth="1000px" margin="0 auto" mt={5}>
+        <Button
+          onClick={() => navigate(`/companycreate`)}
+          leftIcon={<AddIcon />}
+          size="sm"
+          bg="white"
+          variant="outline"
+          mb={5}
+        >
+          Create New
+        </Button>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
           {companyProfiles.length > 0 ? (
             companyProfiles.map((profile) => (
+              
               <Box
                 key={profile.id}
-                boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+                boxShadow="2px 4px 6px rgba(0, 0, 0, 0.5)"
                 bg="white"
                 p={4}
                 rounded="xl"
@@ -73,6 +76,7 @@ function CompanyProfileUser() {
                     fontSize="lg"
                     lineHeight={1.2}
                     fontWeight="bold"
+                    transition="opacity 1s ease-in-out"
                   >
                     {profile.name || "No name available"}
                   </Heading>
@@ -86,11 +90,12 @@ function CompanyProfileUser() {
                       variant="outline"
                       onClick={() => navigate(`/companydetail/${profile.id}`)}
                     >
-                      <AddIcon /> View Details
+                      View Details
                     </Button>
                   </HStack>
                 </Box>
               </Box>
+              
             ))
           ) : (
             <Text color="black" textAlign="center">

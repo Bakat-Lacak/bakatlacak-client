@@ -15,9 +15,9 @@ import {
   HStack,
   IconButton,
   Wrap,
-  Spinner
+  Spinner,
 } from "@chakra-ui/react";
-import { ArrowLeftIcon } from "@chakra-ui/icons";
+import { EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import theme from "../../../theme";
 
 export default function CompanyDetail() {
@@ -32,7 +32,7 @@ export default function CompanyDetail() {
     setIsLoading(false);
   };
 
- const handleClick = () => {
+  const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => {
       navigate(`/companyprofile`);
@@ -46,99 +46,86 @@ export default function CompanyDetail() {
 
   if (isLoading) {
     return (
-      <Box
-        h="100vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Box h="100vh" display="flex" alignItems="center" justifyContent="center">
         <Spinner size="xl" color="navy" />
       </Box>
     );
   }
 
-
   return (
     <ChakraProvider theme={theme}>
-    <Box pb={8}>
-      <Box pos="relative" bg="navy" height="250px" w="100%">
-        <Wrap mx={2}>
-          <IconButton
-            onClick={handleClick}
-            mt={2}
-            icon={<ArrowLeftIcon />}
-          />
-        </Wrap>
-      </Box>
-
-      <Box
-        maxW="3xl"
-        p={4}
-        isolation="isolate"
-        zIndex={3}
-        mt="-5rem"
-        marginInline="auto"
-      >
-        <Box
-          boxShadow="0 4px 6px rgba(160, 174, 192, 0.6)"
-          bg="white"
-          p={{ base: 4, sm: 8 }}
-          overflow="hidden"
-          rounded="2xl"
-        >
-          <Box direction="column" spacing={5} textAlign="left">
-            <HStack>
-            <Heading
-              color="navy"
-              fontSize="4xl"
-              lineHeight={1.2}
-              fontWeight="bold"
-            >
-              {company.name}
-            </Heading>
-          </HStack>
-            <Spacer mt={2} />
-          </Box>
+      <Box pb={8}>
+        <Box pos="relative" bg="navy" height="250px" w="100%">
+          <Wrap mx={2}>
+            <IconButton onClick={handleClick} mt={2} icon={<ArrowLeftIcon />} />
+          </Wrap>
         </Box>
-        <HStack>
-          <Box maxW="70%" p={5} mr={1} pos="left" h="400px">
-            <Heading
-              color="navy"
-              fontSize="xl"
-              lineHeight={1.2}
-              fontWeight="bold"
-            >
-              Company Description
-            </Heading>
-            <Text color="black" fontSize="l" maxW="100%" lineHeight={1.2}>
-            {company.description}
-            </Text>
-          </Box>
 
-          <Box maxW="100%" p={2} ml="520" h="400px" pos="absolute">
-            <Card>
-              <CardHeader>
-                <Heading as="h3" size="md" color="navy">
-                  Company Details
+        <Box
+          maxW="3xl"
+          p={4}
+          isolation="isolate"
+          zIndex={3}
+          mt="-5rem"
+          marginInline="auto"
+        >
+          <Box
+            boxShadow="0 4px 6px rgba(160, 174, 192, 0.6)"
+            bg="white"
+            p={{ base: 4, sm: 8 }}
+            overflow="hidden"
+            rounded="2xl"
+          >
+            <Box direction="column" spacing={5} textAlign="left">
+              <HStack>
+                <Heading
+                  color="navy"
+                  fontSize="4xl"
+                  lineHeight={1.2}
+                  fontWeight="bold"
+                >
+                  {company.name}
                 </Heading>
-              </CardHeader>
-              <CardBody>
-                <Stack spacing={4}>
-                  <Text>
-                    Location: {company.location}
-                  </Text>
-                  <Text>Field: {company.field}</Text>
-                  <Text>
-                    Total Employees:{" "}
-                    {company.total_employee}
-                  </Text>
-                </Stack>
-              </CardBody>
-            </Card>
+                <IconButton onClick={() =>
+                navigate(`/companyedit/${id}`)} size="xs" color="navy" icon={<EditIcon />} />
+              </HStack>
+              <Spacer mt={2} />
+            </Box>
           </Box>
-        </HStack>
+          <HStack>
+            <Box maxW="70%" p={5} mr={1} pos="left" h="400px">
+              <Heading
+                color="navy"
+                fontSize="xl"
+                lineHeight={1.2}
+                fontWeight="bold"
+              >
+                Company Description
+              </Heading>
+              <Text color="black" fontSize="l" maxW="100%" lineHeight={1.2}>
+                {company.description}
+              </Text>
+            </Box>
+
+            <Box maxW="100%" p={2} ml="520" h="400px" pos="absolute">
+              <Card>
+                <CardHeader>
+                  <Heading as="h3" size="md" color="navy">
+                    Company Details
+                  </Heading>
+                </CardHeader>
+                <CardBody>
+                  <Stack spacing={4}>
+                    <Text>Location: {company.location}</Text>
+                    <Text>Field: {company.field}</Text>
+                    <Text>Total Employees: {company.total_employee}</Text>
+                  </Stack>
+                </CardBody>
+              </Card>
+            </Box>
+          </HStack>
+        </Box>
       </Box>
-    </Box>
-  </ChakraProvider>
-  )
+    </ChakraProvider>
+  );
 }
