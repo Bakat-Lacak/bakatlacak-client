@@ -15,13 +15,13 @@ import {
   } from "@chakra-ui/react";
 
   export default function TableProfile({user}) {
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [birthDate, setBirthDate] = useState("")
-    const [gender, setGender] = useState("")
-    const [address, setAddress] = useState("")
+    const [firstName, setFirstName] = useState(user.first_name)
+    const [lastName, setLastName] = useState(user.last_name)
+    const [email, setEmail] = useState(user.email)
+    const [phoneNumber, setPhoneNumber] = useState(user.phone_number)
+    const [birthDate, setBirthDate] = useState(user.birth_date)
+    const [gender, setGender] = useState(user.gender)
+    const [address, setAddress] = useState(user.address)
 
     const handleBasicInfo = async () => {
       const data = await editUser({
@@ -33,6 +33,7 @@ import {
         gender,
         address
       })
+      console.log(data)
     }
 
     return (
@@ -40,7 +41,7 @@ import {
             <TableContainer className="border-4 border-solid" alt="basic info">
               <Table>
                 <TableCaption>
-                  <Button variant="solid">Save</Button>
+                  <Button variant="solid" onClick={handleBasicInfo}>Save</Button>
                   <Button variant="solid">Add</Button>
                 </TableCaption>
                 <Thead>
