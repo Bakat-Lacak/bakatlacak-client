@@ -8,10 +8,13 @@ import Companydetail from './pages/Companies/companydetail';
 import CompanyCreate from './pages/Companies/Recruiter/companycreate';
 import CompanyEdit from './pages/Companies/Recruiter/companyedit';
 import Navbar from './components/Navbar';
-
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "../theme"
 function App() {
   return (
+    
     <Router>
+      <ChakraProvider theme={theme}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,7 +25,9 @@ function App() {
         <Route path="/companycreate" element={<CompanyCreate />} />
         <Route path="/companyedit/:id" element={<CompanyEdit />} />
       </Routes>
+      </ChakraProvider>
     </Router>
+    
   );
 }
 

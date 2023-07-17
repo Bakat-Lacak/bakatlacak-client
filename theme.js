@@ -1,7 +1,12 @@
 // theme.js
 import { extendTheme } from '@chakra-ui/react'
 
+
 const theme = extendTheme({
+    fonts: {
+        heading: `'dm sans', sans-serif`,
+        body: `'nunito', sans-serif`
+    },
     colors: {
         transparent: 'transparent',
         black: '#001c30',
@@ -10,10 +15,7 @@ const theme = extendTheme({
         mint: '#dafffb',
         white: '#ffffff'
       },
-    fonts: {
-        heading: `'raleway', sans-serif`,
-        body: `'lato', sans-serif`
-    },
+
 },
 
 )

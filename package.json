@@ -12,6 +12,8 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.7.1",
+    "@fontsource-variable/nunito": "^5.0.6",
+    "@fontsource/dm-sans": "^5.0.5",
     "@fontsource/lato": "^5.0.5",
     "@fontsource/raleway": "^5.0.5",
     "@headlessui/react": "^1.7.15",

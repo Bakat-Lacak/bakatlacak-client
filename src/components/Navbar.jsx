@@ -60,7 +60,7 @@ function Navbar() {
         <Flex maxW="7xl" mx="auto" px={4} align="center" h={16}>
           <Box>
             <a href="/">
-              <Image src={logo} alt="LOGO" h={5} />
+              <Image src={logo} alt="LOGO" h={5} mb={1} mr={2}/>
             </a>
           </Box>
           <Flex align="center">
