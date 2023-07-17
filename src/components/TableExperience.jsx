@@ -8,9 +8,6 @@ import {
     Tr,
     Th,
     Td,
-    Editable,
-    EditableInput,
-    EditablePreview,
     Box,
     Input
   } from "@chakra-ui/react";
@@ -19,11 +16,11 @@ import {
 export default function TableExperience({experience}) {
 
     return (
-        <Box className="pr-20 pt-10">
-          <TableContainer className="border-4 border-dashed" alt="Education">
+        <Box className="pr-20 pt-10 w-full">
+          <TableContainer className="border-4 border-solid" alt="Education">
             <Table>
               <TableCaption>
-                <Button variant="solid">Edit</Button>
+                <Button variant="solid">Save</Button>
               </TableCaption>
               <Thead>
                 <Tr>

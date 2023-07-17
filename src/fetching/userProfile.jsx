@@ -55,3 +55,17 @@ export async function getEducation () {
         console.log(err)
     }
 }
+
+export async function getSkills () {
+    try {
+        const response = await instance({
+            method:'GET',
+            url: `/skills/me`
+        })
+
+        const data = response.data
+        return data;
+    } catch(err) {
+        console.log(err)
+    }
+}

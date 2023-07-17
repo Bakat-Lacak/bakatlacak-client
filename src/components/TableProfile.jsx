@@ -8,20 +8,18 @@ import {
     Tr,
     Th,
     Td,
-    Editable,
-    EditableInput,
-    EditablePreview,
     Box,
     Input
   } from "@chakra-ui/react";
 
   export default function TableProfile({user, profile}) {
     return (
-        <Box className="pr-20 pt-10">
-            <TableContainer className="border-4 border-dashed" alt="basic info">
+        <Box className="pr-20 pt-10 w-full">
+            <TableContainer className="border-4 border-solid" alt="basic info">
               <Table>
                 <TableCaption>
-                  <Button variant="solid">Edit</Button>
+                  <Button variant="solid">Save</Button>
+                  <Button variant="solid">Add</Button>
                 </TableCaption>
                 <Thead>
                   <Tr>
@@ -55,6 +53,12 @@ import {
                     </Td>
                   </Tr>
                   <Tr>
+                    <Td width="25%">About Me</Td>
+                    <Td>
+                      <Input type="text" defaultValue={profile.about_me} />
+                    </Td>
+                  </Tr>
+                  <Tr>
                     <Td width="25%">Birth date</Td>
                     <Td>
                       <Input type="text" defaultValue={user.birth_date} />
@@ -67,18 +71,9 @@ import {
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">About Me</Td>
+                    <Td width="25%">Address</Td>
                     <Td>
-                      <Input type="text" defaultValue={profile.about_me} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Resume</Td>
-                    <Td>
-                      <Editable defaultValue={profile.resume}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
+                      <Input tpye="text" defaultValue={user.address}></Input>
                     </Td>
                   </Tr>
                 </Tbody>
