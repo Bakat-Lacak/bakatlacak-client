@@ -13,9 +13,10 @@ import {
 import { createCompanyProfile } from "../../../fetching/companyprofile";
 import Swal from "sweetalert2";
 import theme from "../../../../theme";
+import { useNavigate } from "react-router-dom"
 
 function CreateCompany() {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     field: "",
@@ -43,7 +44,7 @@ function CreateCompany() {
         icon: "success",
         title: "Company profile created",
         text: "A new profile has been created successfully.",
-        confirmButtonText: "OK",
+        showConfirmButton: false,
         timer: 1000,
       });
       setFormData({
@@ -53,6 +54,7 @@ function CreateCompany() {
         location: "",
         total_employee: "",
       });
+      navigate("/companyprofile")
     } catch (error) {
       console.log("Error creating company profile:", error);
       Swal.fire({

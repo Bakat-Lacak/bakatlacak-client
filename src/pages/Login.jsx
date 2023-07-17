@@ -18,7 +18,8 @@ export default function Login() {
       Swal.fire({
         title: "Login Success",
         icon: "success",
-        timer: 1000
+        timer: 1500,
+        showConfirmButton: false,
       });
       setUser({ email, password, access_token, role });
       location.href = "/"

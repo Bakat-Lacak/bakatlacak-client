@@ -14,17 +14,18 @@ import {
   CardHeader,
   HStack,
   IconButton,
-  Wrap,
   Spinner,
 } from "@chakra-ui/react";
 import { EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import theme from "../../../theme";
+import { useStore } from "../../modules/store";
 
 export default function CompanyDetail() {
   const { id } = useParams();
   const [company, setCompany] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const user = useStore((state) => state.user); 
 
   const fetchCompany = async () => {
     const data = await getCompanyProfileById(id);
@@ -47,7 +48,7 @@ export default function CompanyDetail() {
   if (isLoading) {
     return (
       <Box h="100vh" display="flex" alignItems="center" justifyContent="center">
-        <Spinner size="xl" color="navy" />
+        <Spinner size="xl" color="black" />
       </Box>
     );
   }
@@ -55,10 +56,17 @@ export default function CompanyDetail() {
   return (
     <ChakraProvider theme={theme}>
       <Box pb={8}>
-        <Box pos="relative" bg="navy" height="250px" w="100%">
-          <Wrap mx={2}>
-            <IconButton onClick={handleClick} mt={2} icon={<ArrowLeftIcon />} />
-          </Wrap>
+        <Box pos="relative" bg="black" height="250px" w="100%">
+          <IconButton
+            onClick={handleClick}
+            mt={2}
+            ml={2}
+            icon={<ArrowLeftIcon />}
+            variant="outline"
+            color="white"
+            size="md"
+            isRound
+          />
         </Box>
 
         <Box
@@ -79,15 +87,21 @@ export default function CompanyDetail() {
             <Box direction="column" spacing={5} textAlign="left">
               <HStack>
                 <Heading
-                  color="navy"
+                  color="black"
                   fontSize="4xl"
                   lineHeight={1.2}
                   fontWeight="bold"
                 >
                   {company.name}
                 </Heading>
-                <IconButton onClick={() =>
-                navigate(`/companyedit/${id}`)} size="xs" color="navy" icon={<EditIcon />} />
+                {user.role === "recruiter" && ( // Conditionally show the Edit button for recruiters
+                  <IconButton
+                    onClick={() => navigate(`/companyedit/${id}`)}
+                    size="xs"
+                    color="black"
+                    icon={<EditIcon />}
+                  />
+                )}
               </HStack>
               <Spacer mt={2} />
             </Box>
@@ -95,7 +109,7 @@ export default function CompanyDetail() {
           <HStack>
             <Box maxW="70%" p={5} mr={1} pos="left" h="400px">
               <Heading
-                color="navy"
+                color="black"
                 fontSize="xl"
                 lineHeight={1.2}
                 fontWeight="bold"
@@ -110,7 +124,7 @@ export default function CompanyDetail() {
             <Box maxW="100%" p={2} ml="520" h="400px" pos="absolute">
               <Card>
                 <CardHeader>
-                  <Heading as="h3" size="md" color="navy">
+                  <Heading as="h3" size="md" color="black">
                     Company Details
                   </Heading>
                 </CardHeader>

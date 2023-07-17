@@ -16,7 +16,7 @@ export default {
       'white': '#ffffff',
     },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
+      sans: ['raleway', 'sans-serif'],
       serif: ['Georgia','serif'],
     },
     extend: {
