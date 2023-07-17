@@ -1,41 +1,23 @@
 import { useState, useEffect, React } from "react";
-import { getUserProfileById, getUser, getEducation } from "../fetching/userProfile";
+import {
+  getUserProfileById,
+  getUser,
+  getEducation,
+} from "../fetching/userProfile";
 import { getExperience } from "../fetching/userProfile";
 import { useStore } from "../modules/store";
-import image from "../assets/example.jpg";
 import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import TableExperience from "../components/TableExperience";
 import TableEducation from "../components/TableEducation";
-import {
-  Button,
-  ButtonGroup,
-  Grid,
-  GridItem,
-  Flex,
-  Spacer,
-  TableContainer,
-  TableCaption,
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  Editable,
-  EditableInput,
-  EditableTextarea,
-  EditablePreview,
-  VStack,
-  Input
-} from "@chakra-ui/react";
+import TableProfile from "../components/TableProfile";
+import { Button, Flex, VStack } from "@chakra-ui/react";
 
 export default function UserProfilePage() {
   const [profile, setProfile] = useState({});
   const [user, setUser] = useState({});
   const [experience, setExperience] = useState({});
-  const [education, setEducation] = useState({})
+  const [education, setEducation] = useState({});
   const [isLoading, setLoading] = useState(false);
   const loggedUser = useStore((state) => state.user);
   const [showBasicInfo, setShowBasicInfo] = useState(true);
@@ -46,11 +28,11 @@ export default function UserProfilePage() {
     const dataUser = await getUser(loggedUser.id);
     const dataProfile = await getUserProfileById(loggedUser.id);
     const dataExperience = await getExperience(loggedUser.id);
-    const dataEducation = await getEducation(loggedUser.id)
+    const dataEducation = await getEducation(loggedUser.id);
     setProfile(dataProfile);
     setUser(dataUser);
     setExperience(dataExperience);
-    setEducation(dataEducation)
+    setEducation(dataEducation);
     setLoading(false);
   }
 
@@ -84,7 +66,7 @@ export default function UserProfilePage() {
   return (
     <>
       <Flex>
-        <Box width="20%" className="pl-20 pt-10">
+        <Box width="20%" className="pl-20 pt-10" alt="side button"> 
           <Card>
             <CardBody className="bg-mint bg-opacity-30">
               <Stack divider={<StackDivider />} spacing="1">
@@ -113,82 +95,19 @@ export default function UserProfilePage() {
             </CardBody>
           </Card>
         </Box>
+        <VStack flex="1">
         {showBasicInfo && (
-          <Box width="80%" className="pr-20 pt-10">
-            <TableContainer className="border-4 border-dashed" alt="basic info">
-              <Table>
-                <TableCaption>
-                  <Button variant="solid">Edit</Button>
-                </TableCaption>
-                <Thead>
-                  <Tr>
-                    <Th fontSize="xl">Basic Information</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
-                    <Td width="25%">First name</Td>
-                    <Td>
-                    <Input type="text" defaultValue={user.first_name} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Last name</Td>
-                    <Td>
-                    <Input type="text" defaultValue={user.last_name} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">E-mail</Td>
-                    <Td>
-                    <Input type="email" defaultValue={user.email} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Phone Number</Td>
-                    <Td>
-                    <Input type="text" defaultValue={user.phone_number} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Birth date</Td>
-                    <Td>
-                    <Input type="text" defaultValue={user.birth_date} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Gender</Td>
-                    <Td>
-                    <Input type="text" defaultValue={user.gender} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">About Me</Td>
-                    <Td>
-                    <Input type="text" defaultValue={profile.about_me} />
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td width="25%">Resume</Td>
-                    <Td>
-                      <Editable defaultValue={profile.resume}>
-                        <EditablePreview />
-                        <EditableInput />
-                      </Editable>
-                    </Td>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </TableContainer>
-          </Box>
+          <TableProfile user={user} profile={profile} />
         )}
-        {showEducation && (
-          education.map((educ, index) => {
-            return(
-            <TableEducation education={educ} key={index}></TableEducation>
-            )
-          })
-        )}
+        </VStack>
+        <VStack flex="1">
+          {showEducation &&
+            education.map((educ, index) => {
+              return (
+                <TableEducation education={educ} key={index}></TableEducation>
+              );
+            })}
+        </VStack>
         <VStack flex="1">
           {showExperience &&
             experience.map((exp, index) => {

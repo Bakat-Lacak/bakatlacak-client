@@ -17,7 +17,7 @@ import {
 
   export default function TableEducation({education}) {
     return (
-        <Box width="80%" className="pr-20 pt-10">
+        <Box className="pr-20 pt-10">
             <TableContainer className="border-4 border-dashed" alt="Education">
               <Table>
                 <TableCaption>
@@ -33,13 +33,25 @@ import {
                   <Tr>
                     <Td width="25%">School</Td>
                     <Td>
-                    <Input type="text" defaultValue={education.id} />
+                    <Input type="text" defaultValue={education.Education.school_name} />
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Description</Td>
+                    <Td width="25%">Start Date</Td>
                     <Td>
-                    <Input type="text" defaultValue={education.description} />
+                    <Input type="text" defaultValue={education.start_date} />
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td width="25%">Graduation Date</Td>
+                    <Td>
+                    <Input type="text" defaultValue={education.graduation_date} />
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td width="25%">Major</Td>
+                    <Td>
+                    <Input type="text" defaultValue={education.major} />
                     </Td>
                   </Tr>
                 </Tbody>

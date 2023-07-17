@@ -19,7 +19,7 @@ import {
 export default function TableExperience({experience}) {
 
     return (
-        <Box width="100%" className="pr-20 pt-10">
+        <Box className="pr-20 pt-10">
           <TableContainer className="border-4 border-dashed" alt="Education">
             <Table>
               <TableCaption>
