@@ -69,3 +69,24 @@ export async function getSkills () {
         console.log(err)
     }
 }
+
+export async function editUser (params) {
+    try {
+        const { first_name, last_name, email, phone_number, birth_date, gender, address } = params
+        const response = await instance({
+            method:"PUT",
+            url: `/users/update/me`,
+            data: {
+                first_name,
+                last_name,
+                email,
+                phone_number,
+                birth_date,
+                gender,
+                address
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
