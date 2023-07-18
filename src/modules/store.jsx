@@ -15,6 +15,7 @@ const jobListStore = (set) => ({
   },
 });
 
+<<<<<<< HEAD
 const jobDetailStore = (set) => ({
   jobDetail: {},
   setJobDetail: (newData) => {
@@ -22,12 +23,17 @@ const jobDetailStore = (set) => ({
   },
 });
 
+=======
+>>>>>>> 6dc5a8a (search query filter but not with styling)
 export const useStore = create(
   persist(
     (...a) => ({
       ...userStore(...a),
       ...jobListStore(...a),
+<<<<<<< HEAD
       ...jobDetailStore(...a),
+=======
+>>>>>>> 6dc5a8a (search query filter but not with styling)
     }),
     { name: "bound-store" }
   )
