@@ -274,9 +274,17 @@ export default function Home() {
         </div>
       </div>
       {/* Flow End */}
+      <div className="flex justify-center">
+      <button
+          onClick={() => handleButton("/job-listing")}
+          className="mt-8 inline-block uppercase rounded-full bg-[#001C30] px-12 py-6 text-2xl text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+        >
+          find your next job
+        </button>
+        </div>
 
       {/* Job Overview */}
-      <div className="min-h-screen w-full flex justify-center items-center">
+      <div className="py-20 w-full flex justify-evenly items-center">
         {jobCard.map((jobCard) => (
           <div
             className="w-full h-full max-w-xs shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
@@ -312,12 +320,7 @@ export default function Home() {
             </div>
           </div>
         ))}
-        <a
-          onClick={() => handleButton("/job-listing")}
-          className="mt-8 inline-block rounded bg-[#001C30] px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-        >
-          Get A Job
-        </a>
+        
       </div>
     </section>
   );
