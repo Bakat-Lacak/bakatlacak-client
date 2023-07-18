@@ -15,7 +15,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const data = await jobListing();
-        setJobCard(data.slice(0, 3));
+        setJobCard(data.slice(0, 6));
       } catch (error) {
         console.log(error);
       }
@@ -284,15 +284,13 @@ export default function Home() {
         </div>
 
       {/* Job Overview */}
-      <div className="py-20 w-full flex justify-evenly items-center">
+      <div className="py-20 flex flex-wrap flex-row justify-center">
         {jobCard.map((jobCard) => (
           <div
-            className="w-full h-full max-w-xs shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"
+            className="w-1/3 h-24 my-20 flex flex-col items-center"
             key={jobCard.id}
           >
-            <div className="">
-              <div className="group bg-gray-900 p-4">
-                <div className=""></div>
+              <div className="w-9/12 group bg-gray-900 p-4 hover:shadow-xl rounded-xl">
                 <div className="flex items-center gap-x-2">
                   <img
                     className="aspect-[2/2] w-16"
@@ -317,7 +315,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         ))}
         
