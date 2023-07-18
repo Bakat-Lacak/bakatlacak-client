@@ -1,25 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom";
-import { useStore } from "../modules/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchJobDetail } from "../fetching/jobDetail";
 
 export default function JobDetail() {
   const { id } = useParams();
-  const setJobDetail = useStore((state) => state.setJobDetail);
-  const jobDetail = useStore((state) => state.jobDetail);
+  const [jobDetail, setJobDetail] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchJobDetail(id);
-        console.log(data);
         setJobDetail(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching job detail:", error);
       }
     };
+    setLoading(true);
     fetchData();
-  }, [id, setJobDetail]);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex justify-center">
@@ -27,7 +32,8 @@ export default function JobDetail() {
         <div className="w-full ">
           {/* Header */}
           <div className="mt-[40px]">
-            <h2 className="font-normal">{jobDetail.CompanyProfile.name}</h2>
+            <h2 className="font-normal">{jobDetail.CompanyProfile?.name}</h2>
+
             <h1 className="text-4xl font-semibold">{jobDetail.title}</h1>
             {/* Header End */}
           </div>
@@ -104,10 +110,10 @@ export default function JobDetail() {
 
           {/* About Company */}
           <h2 className="mt-[20px] mb-[5px] font-medium">
-            About {jobDetail.CompanyProfile.name}
+            About {jobDetail.CompanyProfile?.name}
           </h2>
           <h3 className="bg-black  bg-opacity-20 rounded-md p-4 border-black border-opacity-80 ">
-            {jobDetail.CompanyProfile.description}
+            {jobDetail.CompanyProfile?.description}
           </h3>
           {/* About Company End */}
         </div>
