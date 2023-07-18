@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from "react";
+import { useState, React } from "react";
 import { editUser } from "../fetching/userProfile";
 import {
     Button,
@@ -38,11 +38,10 @@ import {
 
     return (
         <Box className="pr-20 pt-10 w-full">
-            <TableContainer className="border-4 border-solid" alt="basic info">
+            <TableContainer className="border-2 border-solid" alt="basic info">
               <Table>
                 <TableCaption>
                   <Button variant="solid" onClick={handleBasicInfo}>Save</Button>
-                  <Button variant="solid">Add</Button>
                 </TableCaption>
                 <Thead>
                   <Tr>

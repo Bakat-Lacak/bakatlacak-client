@@ -90,3 +90,11 @@ export async function editUser (params) {
         console.log(err)
     }
 }
+
+export async function editEducation (params) {
+    try {
+        
+    } catch(err) {
+        console.log(err)
+    }
+}

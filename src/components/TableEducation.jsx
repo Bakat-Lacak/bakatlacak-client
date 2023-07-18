@@ -8,9 +8,6 @@ import {
     Tr,
     Th,
     Td,
-    Editable,
-    EditableInput,
-    EditablePreview,
     Box,
     Input
   } from "@chakra-ui/react";
@@ -18,7 +15,7 @@ import {
   export default function TableEducation({education}) {
     return (
         <Box className="pr-20 pt-10 w-full">
-            <TableContainer className="border-4 border-solid" alt="Education">
+            <TableContainer className="border-2 border-solid" alt="Education">
               <Table>
                 <TableCaption>
                   <Button variant="solid">Save</Button>

@@ -17,7 +17,7 @@ export default function TableExperience({experience}) {
 
     return (
         <Box className="pr-20 pt-10 w-full">
-          <TableContainer className="border-4 border-solid" alt="Education">
+          <TableContainer className="border-2 border-solid" alt="Education">
             <Table>
               <TableCaption>
                 <Button variant="solid">Save</Button>

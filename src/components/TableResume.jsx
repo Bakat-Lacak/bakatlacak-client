@@ -16,7 +16,7 @@ import { CopyIcon } from "@chakra-ui/icons";
 export default function TableResume({ profile }) {
   return (
     <Box className="pr-20 pt-10 w-full">
-      <TableContainer className="border-4 border-solid" alt="basic info">
+      <TableContainer className="border-2 border-solid" alt="basic info">
         <Table>
           <TableCaption>
             <Button variant="solid">Save</Button>
