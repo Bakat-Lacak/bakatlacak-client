@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import JobListing from "./pages/JobListing";
 import JobDetail from "./pages/JobDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/job" element={<JobListing />} />
           <Route path="/job/:id" element={<JobDetail />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
