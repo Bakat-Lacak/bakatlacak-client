@@ -4,17 +4,6 @@ class Footer extends Component {
   render() {
     return (
       <>
-        <div>
-          <link
-            rel="stylesheet"
-            href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
-          />
-          <link
-            rel="stylesheet"
-            href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-          ></link>
-        </div>
-
         <footer className="relative pt-8 pb-6">
           <div>
             <div className="flex flex-wrap text-left lg:text-left backgro">
