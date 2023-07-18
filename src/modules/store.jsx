@@ -8,10 +8,18 @@ const userStore = (set) => ({
   },
 });
 
+const jobListStore = (set) => ({
+  jobList: [],
+  setJobList: (newData) => {
+    set(() => ({ jobList: newData }));
+  },
+});
+
 export const useStore = create(
   persist(
     (...a) => ({
       ...userStore(...a),
+      ...jobListStore(...a),
     }),
     { name: "bound-store" }
   )
