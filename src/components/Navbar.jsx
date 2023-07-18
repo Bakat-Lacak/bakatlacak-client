@@ -55,9 +55,8 @@ function Navbar() {
   };
 
   return (
-    <ChakraProvider theme={theme}>
       <Box bg="white">
-        <Flex maxW="7xl" mx="auto" px={4} align="center" h={16}>
+        <Flex mx="auto" px={4} align="center" h={16}>
           <Box>
             <a href="/">
               <Image src={logo} alt="LOGO" h={5} mb={1} mr={2}/>
@@ -175,7 +174,6 @@ function Navbar() {
           </Box>
         </Collapse>
       </Box>
-    </ChakraProvider>
   );
 }
 
