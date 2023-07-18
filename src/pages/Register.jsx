@@ -33,6 +33,8 @@ export default function Register() {
       Swal.fire({
         title: "Register Success",
         icon: "success",
+        showConfirmButton: false,
+        timer: 1500
       });
 
       navigate("/login");
@@ -40,6 +42,8 @@ export default function Register() {
       Swal.fire({
         title: "Register Fail",
         icon: "error",
+        showConfirmButton: false,
+        timer: 1500
       });
     }
   };

@@ -1,4 +1,3 @@
-// import { login } from "../fetching/auth";
 import { useState } from "react";
 import image from "../assets/login-page.jpg";
 import Swal from "sweetalert2";
@@ -28,6 +27,8 @@ export default function Login() {
       Swal.fire({
         title: "Login Fail",
         icon: "error",
+        showConfirmButton: false,
+        timer: 1500
       });
     }
   }

@@ -5,14 +5,12 @@ import {
   Heading,
   Box,
   Text,
-  ChakraProvider,
   SimpleGrid,
   HStack,
   Button,
   Spinner,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import theme from "../../../theme";
 import { useStore } from "../../modules/store";
 
 function CompanyProfileUser() {
@@ -45,7 +43,6 @@ function CompanyProfileUser() {
   }
 
   return (
-    <ChakraProvider theme={theme}>
       <Box pb={8} maxWidth="1000px" margin="0 auto" mt={5}>
         {["recruiter", "admin"].includes(user.role) && ( // conditional for recruiter and admin
           <Button
@@ -106,7 +103,6 @@ function CompanyProfileUser() {
           )}
         </SimpleGrid>
       </Box>
-    </ChakraProvider>
   );
 }
 

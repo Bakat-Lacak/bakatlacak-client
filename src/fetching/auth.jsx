@@ -15,6 +15,9 @@ export async function login(params) {
     console.log(err);
   }
 }
+export function logout() {
+  localStorage.removeItem("token");
+}
 
 export async function register(params) {
   try {
@@ -24,7 +27,7 @@ export async function register(params) {
       first_name,
       last_name,
       phone_number,
-      birth_dat,
+      birth_date,
       gender,
       role,
     } = params;
@@ -37,7 +40,7 @@ export async function register(params) {
         first_name,
         last_name,
         phone_number,
-        birth_dat,
+        birth_date,
         gender,
         role,
       },

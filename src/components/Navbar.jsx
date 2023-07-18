@@ -8,13 +8,11 @@ import {
   IconButton,
   Collapse,
   useDisclosure,
-  ChakraProvider,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
-import theme from "../../theme";
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -55,7 +53,7 @@ function Navbar() {
   };
 
   return (
-    <ChakraProvider theme={theme}>
+
       <Box bg="white">
         <Flex maxW="7xl" px={4} align="center" h={16}>
           <Box>
@@ -175,7 +173,7 @@ function Navbar() {
           </Box>
         </Collapse>
       </Box>
-      </ChakraProvider>
+    
   );
 }
 
