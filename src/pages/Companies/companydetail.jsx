@@ -94,7 +94,7 @@ export default function CompanyDetail() {
                 >
                   {company.name}
                 </Heading>
-                {user.role === "recruiter" && ( // Conditionally show the Edit button for recruiters
+                {["recruiter", "admin"].includes(user.role) && ( // conditional for recruiter and admin
                   <IconButton
                     onClick={() => navigate(`/companyedit/${id}`)}
                     size="xs"

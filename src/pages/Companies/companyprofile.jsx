@@ -47,7 +47,7 @@ function CompanyProfileUser() {
   return (
     <ChakraProvider theme={theme}>
       <Box pb={8} maxWidth="1000px" margin="0 auto" mt={5}>
-        {user.role === "recruiter" && (
+        {["recruiter", "admin"].includes(user.role) && ( // conditional for recruiter and admin
           <Button
             onClick={() => navigate(`/companycreate`)}
             leftIcon={<AddIcon />}
@@ -81,7 +81,7 @@ function CompanyProfileUser() {
                     {profile.name || "No name available"}
                   </Heading>
                   <Text color="black" fontSize="sm" mt={2}>
-                    {profile.description || "No description available"}
+                    {profile.location || "No location available"}
                   </Text>
                   <HStack mt={3}>
                     <Button
