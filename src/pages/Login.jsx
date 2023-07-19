@@ -21,7 +21,8 @@ export default function Login() {
         showConfirmButton: false,
       });
       setUser({ id, email, password, access_token, role });
-      navigate("/");
+      location.href = "/"
+      
     } catch (error) {
       Swal.fire({
         title: "Login Fail",
