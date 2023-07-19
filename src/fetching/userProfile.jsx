@@ -70,6 +70,23 @@ export async function getSkills() {
   }
 }
 
+export async function deleteSkill(param) {
+  try{
+    const {id} = param
+    const response = await instance({
+      method: "DELETE",
+      url: `/skills/delete`,
+      data: {
+        id
+      }
+    })
+
+  } catch(err) {
+    console.log(err)
+  }
+
+}
+
 export async function editUser(params) {
   try {
     const {
@@ -175,12 +192,16 @@ export async function editExperience(params) {
 }
 
 export async function deleteExperience(param) {
-  const { id } = param
-  const response = await instance({
-    method: "DELETE",
-    url: `/experiences/delete`,
-    data: {
-      id
-    }
-  })
+  try {
+    const { id } = param
+    const response = await instance({
+      method: "DELETE",
+      url: `/experiences/delete`,
+      data: {
+        id
+      }
+    })
+  } catch(err) {
+    console.log(err)
+  }
 }
