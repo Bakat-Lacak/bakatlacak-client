@@ -8,8 +8,8 @@ export default function JobCard({ job }) {
   };
 
   return (
-    <div className="w-full h-full max-w-xs shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <div className="group bg-gray-900 p-4">
+    <div className="w-full h-full max-w-xs shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
+      <div className="group bg-black p-4 rounded-sm">
         <div className="flex items-center gap-x-2">
           <img
             className="aspect-[2/2] w-16"
@@ -17,15 +17,15 @@ export default function JobCard({ job }) {
             alt="Company Logo"
           />
           <div>
-            <h3 className="text-xl font-bold text-gray-50">
+            <h3 className="text-xl font-bold text-white">
               {job.CompanyProfile.name}
             </h3>
-            <span className="text-xs text-gray-300">{job.location}</span>
+            <span className="text-xs text-white">{job.location}</span>
           </div>
         </div>
         <div className="my-4">
-          <h3 className="text-2xl font-medium text-gray-200">{job.title}</h3>
-          <div className="mt-2 text-sm text-gray-400">
+          <h3 className="text-2xl font-medium text-white">{job.title}</h3>
+          <div className="mt-2 text-sm text-white">
             {job.salary_start} - {job.salary_end}
           </div>
         </div>
@@ -33,7 +33,7 @@ export default function JobCard({ job }) {
           <button
             onClick={() => handleDetail(job.id)}
             type="button"
-            className="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80"
+            className="font-medium text-white transition-all duration-300 group-hover:text-blue-500/80"
           >
             Detail
           </button>
