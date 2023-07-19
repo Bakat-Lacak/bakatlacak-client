@@ -1,5 +1,6 @@
 import { useState, React } from "react";
 import { editUser } from "../fetching/userProfile";
+import Swal from "sweetalert2";
 import {
     Button,
     TableContainer,
@@ -34,12 +35,18 @@ import {
         address
       })
       console.log(data)
+      Swal.fire({
+        title: "Update Success",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
 
     return (
         <Box className="pr-20 pt-10 w-full">
             <TableContainer className="border-2 border-solid" alt="basic info">
-              <Table>
+              <Table size='sm'>
                 <TableCaption>
                   <Button variant="solid" onClick={handleBasicInfo}>Save</Button>
                 </TableCaption>
@@ -51,43 +58,43 @@ import {
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td width="25%">First name</Td>
+                    <Td fontSize="lg" width="25%">First name</Td>
                     <Td>
                       <Input type="text" defaultValue={user.first_name} onChange={(e) => setFirstName(e.target.value)} />
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Last name</Td>
+                    <Td fontSize="lg" width="25%">Last name</Td>
                     <Td>
                       <Input type="text" defaultValue={user.last_name} onChange={(e) => setLastName(e.target.value)}/>
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">E-mail</Td>
+                    <Td fontSize="lg" width="25%">E-mail</Td>
                     <Td>
                       <Input type="email" defaultValue={user.email} onChange={(e) => setEmail(e.target.value)}/>
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Phone Number</Td>
+                    <Td fontSize="lg" width="25%">Phone Number</Td>
                     <Td>
                       <Input type="text" defaultValue={user.phone_number} onChange={(e) => setPhoneNumber(e.target.value)}/>
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Birth date</Td>
+                    <Td fontSize="lg" width="25%">Birth date</Td>
                     <Td>
                       <Input type="text" defaultValue={user.birth_date} onChange={(e) => setBirthDate(e.target.value)}/>
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Gender</Td>
+                    <Td fontSize="lg" width="25%">Gender</Td>
                     <Td>
                       <Input type="text" defaultValue={user.gender} onChange={(e) => setGender(e.target.value)}/>
                     </Td>
                   </Tr>
                   <Tr>
-                    <Td width="25%">Address</Td>
+                    <Td fontSize="lg" width="25%">Address</Td>
                     <Td>
                       <Input tpye="text" defaultValue={user.address} onChange={(e) => setAddress(e.target.value)}/>
                     </Td>

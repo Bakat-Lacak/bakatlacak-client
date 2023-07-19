@@ -16,7 +16,7 @@ import {
     return (
         <Box className="pr-20 pt-10 w-full">
           <TableContainer className="border-2 border-solid" alt="Education">
-            <Table>
+            <Table size="sm">
               <TableCaption>
                 <Button variant="solid">Save</Button>
               </TableCaption>
@@ -28,11 +28,11 @@ import {
               </Thead>
               <Tbody>
                 <Tr>
-                  <Td width="25%">Skill</Td>
+                  <Td fontSize="lg" width="25%">Skill</Td>
                   <Td><Input type="text" defaultValue={userSkill.Skill.name} /></Td>
                 </Tr>
                 <Tr>
-                  <Td width="25%">Level</Td>
+                  <Td fontSize="lg" width="25%">Level</Td>
                   <Td><Input type="text" defaultValue={userSkill.Skill.level} /></Td>
                 </Tr>
               </Tbody>

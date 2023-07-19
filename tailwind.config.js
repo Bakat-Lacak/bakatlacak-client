@@ -28,6 +28,6 @@ export default {
         '4x1': '2rem',
       },
   },
-  plugins: [require("daisyui")],
+  plugins:[],
 }
 }
