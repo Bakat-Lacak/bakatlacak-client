@@ -32,7 +32,7 @@ export default function JobDetail() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center pb-60">
       <div className="min-w-[80%]">
         <div className="w-full ">
           {/* Header */}

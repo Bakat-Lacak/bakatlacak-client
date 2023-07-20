@@ -53,7 +53,7 @@ function Navbar() {
   };
 
   const handleApply = () => {
-    navigate("/job-apply/${id}")
+    navigate("/job")
   };
 
   return (

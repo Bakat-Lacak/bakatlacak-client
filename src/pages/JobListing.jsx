@@ -349,7 +349,7 @@ function JobListing() {
 
       <div className="mx-auto grid grid-cols-3 gap-5 py-10 container place-items-end px-20">
         {jobList.job_listing.map((job) => (
-          <JobCard key={job.id} job={job} />
+          <JobCard key={job.id} job={job} className="job-card" />
         ))}
       </div>
 

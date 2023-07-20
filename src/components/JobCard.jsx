@@ -9,7 +9,7 @@ export default function JobCard({ job }) {
 
   return (
     <div className="w-full h-full max-w-xs shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <div className="group bg-black p-4 rounded-sm">
+      <div className="group bg-black p-4 rounded-xl job-card">
         <div className="flex items-center gap-x-2">
           <img
             className="aspect-[2/2] w-16"
@@ -24,7 +24,7 @@ export default function JobCard({ job }) {
           </div>
         </div>
         <div className="my-4">
-          <h3 className="text-2xl font-medium text-white">{job.title}</h3>
+          <h3 className="text-lg font-medium text-white">{job.title}</h3>
           <div className="mt-2 text-sm text-white">
             {job.salary_start} - {job.salary_end}
           </div>
