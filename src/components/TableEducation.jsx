@@ -1,4 +1,4 @@
-import { deleteEducation, editEducation } from "../fetching/userProfile";
+import { deleteEducation, editEducation } from "../fetching/education";
 import { useState, React } from "react";
 import Swal from "sweetalert2";
 import {
@@ -15,7 +15,7 @@ import {
     Input
   } from "@chakra-ui/react";
 
-  export default function TableEducation({education}) {
+  export default function TableEducation({education, fetchProfile}) {
     const [schoolName, setSchoolName] = useState(education.Education.school_name)
     const [major, setMajor] = useState(education.major)
     const [degree, setDegree] = useState(education.Degree)
@@ -47,9 +47,9 @@ import {
         confirmButtonColor: '#7F8389',
         cancelButtonColor: '#007D9C',
         confirmButtonText: 'Delete!'
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          const data = deleteEducation({
+          const data = await deleteEducation({
         id: education.Education.id
       })
       console.log(data)
@@ -61,7 +61,7 @@ import {
               timer: 3000
             }
           )
-          window.location.reload()
+          fetchProfile()
         }
         
       })

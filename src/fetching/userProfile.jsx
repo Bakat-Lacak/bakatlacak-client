@@ -25,95 +25,6 @@ export async function editUserProfile(id, formData) {
   }
 }
 
-export async function getUser(id) {
-  try {
-    const response = await instance({
-      method: "GET",
-      url: `/users/${id}`,
-    });
-
-    const data = response.data;
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function getExperience() {
-  try {
-    const response = await instance({
-      method: "GET",
-      url: `/experiences/me`,
-    });
-
-    const data = response.data;
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function getEducation() {
-  try {
-    const response = await instance({
-      method: "GET",
-      url: `/educations/me`,
-    });
-
-    const data = response.data;
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function getSkills() {
-  try {
-    const response = await instance({
-      method: "GET",
-      url: `/skills/me`,
-    });
-
-    const data = response.data;
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function deleteSkill(param) {
-  try{
-    const {id} = param
-    const response = await instance({
-      method: "DELETE",
-      url: `/skills/delete`,
-      data: {
-        id
-      }
-    })
-
-  } catch(err) {
-    console.log(err)
-  }
-
-}
-
-export async function addUserSkill(params) {
-  try {
-    const { name, level } = params
-    const response = await instance({
-      method: "POST",
-      url: `/skills/new`,
-      data: {
-        name,
-        level
-      }
-    })
-  } catch (err) {
-    console.log (err)
-  }
-}
-
 export async function editUser(params) {
   try {
     const {
@@ -143,92 +54,17 @@ export async function editUser(params) {
   }
 }
 
-export async function editEducation(params) {
+export async function getUser(id) {
   try {
-    const { school_name, degree, major, graduation_date, start_date } = params;
     const response = await instance({
-      method: "PUT",
-      url: `/educations/update`,
-      data: {
-        school_name,
-        major,
-        degree,
-        graduation_date,
-        start_date,
-      },
+      method: "GET",
+      url: `/users/${id}`,
     });
+
+    const data = response.data;
+    return data;
   } catch (err) {
     console.log(err);
   }
 }
 
-export async function deleteEducation(params) {
-    try {
-        const { id } = params
-        const response = await instance({
-            method: "DELETE",
-            url: `/educations/it`,
-            data: {
-              id
-            }
-        })
-
-    } catch(err) {
-        console.log(err)
-    }
-}
-
-export async function editExperience(params) {
-  try {
-    const {
-      id,
-      company,
-      department,
-      position,
-      industry,
-      salary,
-      start_date,
-      end_date,
-      description,
-      country,
-      state,
-      city,
-    } = params;
-    const response = await instance({
-      method: "PUT",
-      url: `/experiences/update`,
-      data: {
-        id,
-        company,
-        department,
-        position,
-        industry,
-        salary,
-        start_date,
-        end_date,
-        description,
-        country,
-        state,
-        city,
-      },
-    })
-    console.log(response);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function deleteExperience(param) {
-  try {
-    const { id } = param
-    const response = await instance({
-      method: "DELETE",
-      url: `/experiences/delete`,
-      data: {
-        id
-      }
-    })
-  } catch(err) {
-    console.log(err)
-  }
-}

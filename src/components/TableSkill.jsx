@@ -11,12 +11,12 @@ import {
     Box,
     Input
   } from "@chakra-ui/react";
-  import { deleteSkill } from "../fetching/userProfile";
+  import { deleteSkill } from "../fetching/skills";
   import Swal from "sweetalert2";
 
-  export default function TableSkill({userSkill}) {
+  export default function TableSkill({userSkill, fetchProfile}) {
 
-    const handleDeleteSkill = async () => {
+    const handleDeleteSkill = async (refecth) => {
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -25,9 +25,9 @@ import {
         confirmButtonColor: '#7F8389',
         cancelButtonColor: '#007D9C',
         confirmButtonText: 'Delete!'
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          const data = deleteSkill({
+          const data = await deleteSkill({
         id: userSkill.Skill.id
       })
       console.log(data)
@@ -39,9 +39,8 @@ import {
               timer: 3000
             }
           )
-          window.location.reload()
+          fetchProfile()
         }
-        
       })
 
     }

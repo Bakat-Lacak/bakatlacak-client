@@ -3,7 +3,7 @@ import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import { Button, Flex, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getEducation } from "../../fetching/userProfile";
+import { getEducation } from "../../fetching/education";
 import { useStore } from "../../modules/store";
 import TableEducation from "../../components/TableEducation";
 import SideButton from "../../components/SideButton";
@@ -36,7 +36,7 @@ export default function EducationPage() {
           <VStack flex="1">
           {education.map((education, index) => {
               return (
-                <TableEducation education={education} key={index}></TableEducation>
+                <TableEducation fetchProfile={fetchProfile} education={education} key={index}></TableEducation>
               );
             })}
           </VStack>

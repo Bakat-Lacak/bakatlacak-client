@@ -3,7 +3,7 @@ import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import { Button, Flex, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getExperience } from "../../fetching/userProfile";
+import { getExperience } from "../../fetching/experience";
 import { useStore } from "../../modules/store";
 import TableExperience from "../../components/TableExperience";
 import SideButton from "../../components/SideButton";
@@ -36,7 +36,7 @@ export default function ExperiencePage() {
           <VStack flex="1">
           {experience.map((experience, index) => {
               return (
-                <TableExperience experience={experience} key={index}></TableExperience>
+                <TableExperience fetchProfile={fetchProfile} experience={experience} key={index}></TableExperience>
               );
             })}
           </VStack>

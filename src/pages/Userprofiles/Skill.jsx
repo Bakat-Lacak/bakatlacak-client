@@ -13,12 +13,10 @@ import {
   useDisclosure,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Select,
 } from "@chakra-ui/react";
-import { getSkills, addUserSkill } from "../../fetching/userProfile";
+import { getSkills, addUserSkill } from "../../fetching/skills";
 import { useStore } from "../../modules/store";
 import TableSkill from "../../components/TableSkill";
 import SideButton from "../../components/SideButton";
@@ -120,7 +118,7 @@ export default function SkillPage() {
         <SideButton />
         <VStack flex="1">
           {userSkill.map((userSkill, index) => {
-            return <TableSkill userSkill={userSkill} key={index}></TableSkill>;
+            return <TableSkill fetchProfile={fetchProfile} userSkill={userSkill} key={index}></TableSkill>;
           })}
         </VStack>
       </Flex>
