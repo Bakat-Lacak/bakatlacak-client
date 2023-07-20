@@ -1,12 +1,5 @@
-import { useNavigate } from "react-router-dom";
-
 /* eslint-disable react/prop-types */
 export default function ApplyCard({ applications }) {
-  const navigate = useNavigate();
-  const handleDetail = (id) => {
-    navigate(`/job/${id}`);
-  };
-
   return (
     <div className="w-full h-full max-w-xs shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
       <div className="group bg-black p-4 rounded-sm">
