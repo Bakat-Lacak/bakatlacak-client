@@ -13,11 +13,13 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
+import { useStore } from "../modules/store"
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const user = useStore((state) => state.user);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -53,7 +55,7 @@ function Navbar() {
   };
 
   const handleApply = () => {
-    navigate("/job")
+    navigate("/job-apply-user")
   };
 
   return (
@@ -91,7 +93,7 @@ function Navbar() {
                 fontSize="md"
                 onClick={handleCompany}
               >
-                Company Profile
+                Companies
               </Button>
             )}
             {isLoggedIn && (
@@ -119,7 +121,7 @@ function Navbar() {
               fontSize="md"
               onClick={handleApply}
             >
-              Apply Job
+              Applications
             </Button>
           )}
           </Flex>
@@ -150,49 +152,87 @@ function Navbar() {
         </Flex>
 
         <Collapse in={isOpen} animateOpacity>
-          <Box bg="black" py={2} px={4}>
-            <Flex direction="column">
+          <Flex align="center">
+          {isLoggedIn && (
+            <Button
+              variant="ghost"
+              colorScheme="black"
+              fontWeight="regular"
+              px={4}
+              py={2}
+              rounded="md"
+              fontSize="md"
+              onClick={() => navigate("/job")}
+            >
+              Jobs
+            </Button>
+          )}
+            {isLoggedIn && (
               <Button
                 variant="ghost"
-                colorScheme="white"
-                w="full"
+                colorScheme="black"
+                fontWeight="regular"
                 px={4}
                 py={2}
                 rounded="md"
-                fontSize="sm"
-                onClick={() => navigate("/job")}
+                fontSize="md"
+                onClick={handleCompany}
               >
-                Jobs
+                Companies
               </Button>
-              {isLoggedIn && (
-                <Button
-                  variant="ghost"
-                  colorScheme="white"
-                  w="full"
-                  px={4}
-                  py={2}
-                  rounded="md"
-                  fontSize="sm"
-                  onClick={handleCompany}
-                >
-                  Company Profile
-                </Button>
-              )}
-              {isLoggedIn && (
-                <Button
-                  variant="ghost"
-                  colorScheme="white"
-                  w="full"
-                  px={4}
-                  py={2}
-                  rounded="md"
-                  fontSize="sm"
-                  onClick={handleProfile}
-                >
-                  My Profile
-                </Button>
-              )}
-            </Flex>
+            )}
+            {isLoggedIn && (
+              <Button
+                variant="ghost"
+                colorScheme="black"
+                fontWeight="regular"
+                px={4}
+                py={2}
+                rounded="md"
+                fontSize="md"
+                onClick={handleProfile}
+              >
+                My Profile
+              </Button>
+            )}
+              {["user"].includes(user.role) && (
+            <Button
+              variant="ghost"
+              colorScheme="black"
+              fontWeight="regular"
+              px={4}
+              py={2}
+              rounded="md"
+              fontSize="md"
+              onClick={handleApply}
+            >
+              Applications
+            </Button>
+          )}
+          </Flex>
+          <Spacer />
+          <Button
+            bg="black"
+            color="white"
+            fontWeight="semibold"
+            px={4}
+            py={2}
+            rounded="xl"
+            fontSize="md"
+            onClick={isLoggedIn ? handleLogout : handleLogin}
+          >
+            {isLoggedIn ? "Logout" : "Login"}
+          </Button>
+          <Box display={{ base: "block", md: "none" }}>
+            <IconButton
+              variant="ghost"
+              colorScheme="black"
+              rounded="md"
+              fontSize="sm"
+              aria-label="Open mobile menu"
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              onClick={handleClick}
+            />
           </Box>
         </Collapse>
       </Box>
