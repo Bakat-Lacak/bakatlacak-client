@@ -62,6 +62,7 @@ function Navbar() {
             </a>
           </Box>
           <Flex align="center">
+          {isLoggedIn && (
             <Button
               variant="ghost"
               colorScheme="black"
@@ -74,6 +75,7 @@ function Navbar() {
             >
               Job
             </Button>
+          )}
             {isLoggedIn && (
               <Button
                 variant="ghost"
