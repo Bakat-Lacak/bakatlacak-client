@@ -3,19 +3,19 @@ import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import { Button, Flex, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getUserProfileById } from "../../fetching/userProfile";
+import { getExperience } from "../../fetching/userProfile";
 import { useStore } from "../../modules/store";
-import TableResume from "../../components/TableResume";
+import TableExperience from "../../components/TableExperience";
 import SideButton from "../../components/SideButton";
 
-export default function ResumePage() {
-    const [profile, setProfile] = useState({});
+export default function ExperiencePage() {
+    const [experience, setExperience] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const loggedUser = useStore((state) => state.user);
 
     async function fetchProfile() {
-    const dataProfile = await getUserProfileById(loggedUser.id);
-    setProfile(dataProfile);
+    const dataProfile = await getExperience(loggedUser.id);
+    setExperience(dataProfile);
     }
 
     useEffect(() => {
@@ -34,7 +34,11 @@ export default function ResumePage() {
         <Flex>
         <SideButton />
           <VStack flex="1">
-              <TableResume profile={profile} />
+          {experience.map((experience, index) => {
+              return (
+                <TableExperience experience={experience} key={index}></TableExperience>
+              );
+            })}
           </VStack>
         </Flex>
       </>

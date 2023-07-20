@@ -98,6 +98,22 @@ export async function deleteSkill(param) {
 
 }
 
+export async function addUserSkill(params) {
+  try {
+    const { skill, level } = params
+    const response = await instance({
+      method: "POST",
+      url: `/skills/new`,
+      data: {
+        name: skill,
+        level
+      }
+    })
+  } catch (err) {
+    console.log (err)
+  }
+}
+
 export async function editUser(params) {
   try {
     const {

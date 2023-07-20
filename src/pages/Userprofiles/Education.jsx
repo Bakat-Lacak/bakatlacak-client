@@ -3,19 +3,19 @@ import { CardBody, Card } from "@chakra-ui/card";
 import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
 import { Button, Flex, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getUserProfileById } from "../../fetching/userProfile";
+import { getEducation } from "../../fetching/userProfile";
 import { useStore } from "../../modules/store";
-import TableResume from "../../components/TableResume";
+import TableEducation from "../../components/TableEducation";
 import SideButton from "../../components/SideButton";
 
-export default function ResumePage() {
-    const [profile, setProfile] = useState({});
+export default function EducationPage() {
+    const [education, setEducation] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const loggedUser = useStore((state) => state.user);
 
     async function fetchProfile() {
-    const dataProfile = await getUserProfileById(loggedUser.id);
-    setProfile(dataProfile);
+    const dataProfile = await getEducation(loggedUser.id);
+    setEducation(dataProfile);
     }
 
     useEffect(() => {
@@ -32,9 +32,13 @@ export default function ResumePage() {
     return (
         <>
         <Flex>
-        <SideButton />
+          <SideButton />
           <VStack flex="1">
-              <TableResume profile={profile} />
+          {education.map((education, index) => {
+              return (
+                <TableEducation education={education} key={index}></TableEducation>
+              );
+            })}
           </VStack>
         </Flex>
       </>

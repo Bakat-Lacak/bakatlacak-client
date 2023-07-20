@@ -70,7 +70,7 @@ import {
     
 
     return (
-        <Box className="pr-20 pt-10 w-full">
+        <Box className="pr-20 pt-5 pb-20 w-full">
             <TableContainer className="border-2 border-solid" alt="Education">
               <Table size='sm'>
                 <TableCaption>
