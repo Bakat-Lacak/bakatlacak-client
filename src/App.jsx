@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import JobApply from "./pages/JobApply";
+import JobApplyUser from "./pages/JobApplyUser";
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
           <Route path="/job/:id" element={<JobDetail />} />
           <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/job-apply/:id" element={<JobApply />} />
+          <Route path="/job-apply-user" element={<JobApplyUser />} />
         </Routes>
         <Footer />
       </ChakraProvider>
