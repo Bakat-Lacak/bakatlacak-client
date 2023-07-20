@@ -52,35 +52,43 @@ function Navbar() {
     onToggle();
   };
 
+  const handleApply = () => {
+    navigate("/job-apply/${id}")
+  };
+
   return (
 
       <Box bg="white">
         <Flex maxW="7xl" px={4} align="center" h={16}>
           <Box>
             <a href="/">
-              <Image src={logo} alt="LOGO" h={5} mb={1} mr={2}/>
+              <Image src={logo} alt="LOGO" h={6} mb={1} mr={2}/>
             </a>
           </Box>
           <Flex align="center">
+          {isLoggedIn && (
             <Button
               variant="ghost"
               colorScheme="black"
+              fontWeight="regular"
               px={4}
               py={2}
               rounded="md"
-              fontSize="sm"
+              fontSize="md"
               onClick={() => navigate("/job")}
             >
-              Job
+              Jobs
             </Button>
+          )}
             {isLoggedIn && (
               <Button
                 variant="ghost"
                 colorScheme="black"
+                fontWeight="regular"
                 px={4}
                 py={2}
                 rounded="md"
-                fontSize="sm"
+                fontSize="md"
                 onClick={handleCompany}
               >
                 Company Profile
@@ -90,25 +98,40 @@ function Navbar() {
               <Button
                 variant="ghost"
                 colorScheme="black"
+                fontWeight="regular"
                 px={4}
                 py={2}
                 rounded="md"
-                fontSize="sm"
+                fontSize="md"
                 onClick={handleProfile}
               >
                 My Profile
               </Button>
             )}
+            {isLoggedIn && (
+            <Button
+              variant="ghost"
+              colorScheme="black"
+              fontWeight="regular"
+              px={4}
+              py={2}
+              rounded="md"
+              fontSize="md"
+              onClick={handleApply}
+            >
+              Apply Job
+            </Button>
+          )}
           </Flex>
           <Spacer />
           <Button
             bg="black"
-            color="mint"
-            fontWeight="bold"
+            color="white"
+            fontWeight="semibold"
             px={4}
             py={2}
-            rounded="full"
-            fontSize="sm"
+            rounded="xl"
+            fontSize="md"
             onClick={isLoggedIn ? handleLogout : handleLogin}
           >
             {isLoggedIn ? "Logout" : "Login"}
@@ -139,7 +162,7 @@ function Navbar() {
                 fontSize="sm"
                 onClick={() => navigate("/job")}
               >
-                Job
+                Jobs
               </Button>
               {isLoggedIn && (
                 <Button

@@ -15,7 +15,7 @@ import { useStore } from "../../modules/store";
 
 function CompanyProfileUser() {
   const [companyProfiles, setCompanyProfiles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Set initial loading state to true
+  const [isLoading, setIsLoading] = useState(true); 
   const navigate = useNavigate();
   const user = useStore((state) => state.user);
 
@@ -27,10 +27,10 @@ function CompanyProfileUser() {
     try {
       const data = await getAllCompanyProfile();
       setCompanyProfiles(data);
-      setIsLoading(false); // Set loading state to false when data is fetched
+      setIsLoading(false); 
     } catch (err) {
       console.error("Error fetching company data:", err);
-      setIsLoading(false); // Set loading state to false in case of an error
+      setIsLoading(false);
     }
   };
 

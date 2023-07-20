@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDropzone } from "react-dropzone";
 import fetchJobApply from "../fetching/jobApply";
+import Swal from "sweetalert2"; 
 
 export default function JobApply() {
   const { id } = useParams();
-  const [resumeFile, setResumeFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [resumeFile, setResumeFile] = useState(null); // Initialize to null
 
-  const handleFileChange = (e) => {
-    setResumeFile(e.target.files[0]);
+  const handleFileChange = (acceptedFiles) => {
+    setError(null);
+    if (acceptedFiles.length > 0) {
+      setResumeFile(acceptedFiles[0]);
+    } else {
+      setError("Please select a valid resume file.");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -26,38 +33,50 @@ export default function JobApply() {
 
     try {
       await fetchJobApply(id, resumeFile);
+      setIsLoading(false);
       setSuccess(true);
+      Swal.fire({
+        icon: "success",
+        title: "Application submitted successfully!",
+        timer: 3000, 
+        timerProgressBar: false,
+        onClose: () => {
+          setSuccess(false); 
+        },
+      });
     } catch (error) {
       setError(error.message);
-    } finally {
       setIsLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Submission failed!",
+        text: error.message,
+      });
     }
   };
 
-  return (
-    <div className="flex justify-center">
-      <div className="min-w-[80%]">
-        <h1 className="text-4xl font-semibold">Apply for Job</h1>
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: ".pdf,.doc,.docx",
+    onDrop: handleFileChange,
+  });
 
-        {error && <div className="text-red-500 mt-2">{error}</div>}
+  return (
+    <div className="flex py-40 px-40 justify-center bg-gradient-to-r from-navy to-teal">
+      <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
+        <h1 className="text-4xl font-semibold mb-4">Apply for Job</h1>
+
+        {error && <div className="text-red-500 mb-4">{error}</div>}
         {success && (
-          <div className="text-green-500 mt-2">
-            Application submitted successfully!
-          </div>
+          <div className="text-green-500 mb-4">Application submitted successfully!</div>
         )}
 
-        <form className="mt-4" onSubmit={handleSubmit}>
-          <div>
-            <label className="block font-medium">Upload Resume:</label>
-            <input
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-              className="mt-1"
-            />
+        <form onSubmit={handleSubmit}>
+          <div {...getRootProps()} className="mb-4 border-2 border-dashed p-4">
+            <input {...getInputProps()} />
+            <p>Drop your resume file here, or click to select a file.</p>
           </div>
 
-          <div className="mt-4">
+          <div>
             <button
               type="submit"
               disabled={isLoading}
