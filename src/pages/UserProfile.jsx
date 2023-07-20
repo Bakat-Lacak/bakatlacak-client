@@ -15,22 +15,17 @@ import TableProfile from "../components/TableProfile";
 import TableResume from "../components/TableResume";
 import TableSkill from "../components/TableSkill";
 import { Button, Flex, VStack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function UserProfilePage() {
-  const [profile, setProfile] = useState({});
-  const [user, setUser] = useState({});
-  const [experience, setExperience] = useState({});
-  const [education, setEducation] = useState({});
-  const [userSkill, setUserSkill] = useState({});
+  const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [userSkill, setUserSkill] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const loggedUser = useStore((state) => state.user);
-
-  //button show/hide
-  const [showBasicInfo, setShowBasicInfo] = useState(true);
-  const [showEducation, setShowEducation] = useState(false);
-  const [showExperience, setShowExperience] = useState(false);
-  const [showResume, setShowResume] = useState(false);
-  const [showSkill, setShowSkill] = useState(false);
+  const navigate = useNavigate()
 
   async function fetchProfile() {
     const dataUser = await getUser(loggedUser.id);
@@ -57,42 +52,6 @@ export default function UserProfilePage() {
     );
   }
 
-  const handleBasicInfoClick = () => {
-    setShowBasicInfo(true);
-    setShowEducation(false);
-    setShowExperience(false);
-    setShowResume(false);
-    setShowSkill(false)
-  };
-  const handleEducationClick = () => {
-    setShowBasicInfo(false);
-    setShowEducation(true);
-    setShowExperience(false);
-    setShowResume(false);
-    setShowSkill(false)
-  };
-  const handleExperienceClick = () => {
-    setShowBasicInfo(false);
-    setShowEducation(false);
-    setShowExperience(true);
-    setShowResume(false);
-    setShowSkill(false)
-  };
-  const handleResumeClick = () => {
-    setShowBasicInfo(false);
-    setShowEducation(false);
-    setShowExperience(false);
-    setShowResume(true);
-    setShowSkill(false)
-  };
-  const handleSkillClick = () => {
-    setShowBasicInfo(false);
-    setShowEducation(false);
-    setShowExperience(false);
-    setShowResume(false);
-    setShowSkill(true)
-  };
-
   return (
     <>
       <Flex>
@@ -100,35 +59,35 @@ export default function UserProfilePage() {
           <Card>
             <CardBody className="bg-mint bg-opacity-30">
               <Stack divider={<StackDivider />} spacing="1">
-                <Button variant="ghost" onClick={handleBasicInfoClick}>
+                <Button variant="ghost">
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Basic Info
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost" onClick={handleEducationClick}>
+                <Button variant="ghost">
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Educations
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost" onClick={handleExperienceClick}>
+                <Button variant="ghost">
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Experiences
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost" onClick={handleResumeClick}>
+                <Button variant="ghost" onClick={() => navigate(`/resume`)}>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Resume
                     </Heading>
                   </Box>
                 </Button>
-                <Button variant="ghost" onClick={handleSkillClick}>
+                <Button variant="ghost">
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Skill
@@ -140,25 +99,18 @@ export default function UserProfilePage() {
           </Card>
         </Box>
         <VStack flex="1">
-        {showBasicInfo && (
           <TableProfile user={user} profile={profile} />
-        )}
-          {showEducation &&
-            education.map((educ, index) => {
+           {education.map((educ, index) => {
               return (
                 <TableEducation education={educ} key={index}></TableEducation>
               );
             })}
-          {showExperience &&
-            experience.map((exp, index) => {
+          { experience.map((exp, index) => {
               return (
                 <TableExperience experience={exp} key={index}></TableExperience>
               );
             })}
-            {showResume &&
-              <TableResume profile={profile} />}
-          {showSkill &&
-            userSkill.map((userSkill, index) => {
+          {userSkill.map((userSkill, index) => {
               return (
                 <TableSkill userSkill={userSkill} key={index}></TableSkill>
               );

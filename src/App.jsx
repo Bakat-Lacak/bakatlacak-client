@@ -11,6 +11,7 @@ import JobListing from "./pages/JobListing";
 import JobDetail from "./pages/JobDetail";
 import Footer from "./components/Footer";
 import UserProfilePage from './pages/UserProfile';
+import ResumePage from './pages/Userprofiles/ResumePage';
 import Navbar from './components/Navbar';
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme"
@@ -30,6 +31,7 @@ function App() {
         <Route path="/companyedit/:id" element={<CompanyEdit />} />
         <Route path="/job" element={<JobListing />} />
         <Route path="/job/:id" element={<JobDetail />} />
+        <Route path="/resume" element={<ResumePage/>}/>
         <Route path="/profile" element={<UserProfilePage/>}/>
       </Routes>
       <Footer />

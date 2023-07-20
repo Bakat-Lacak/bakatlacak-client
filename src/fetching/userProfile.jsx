@@ -14,6 +14,17 @@ export async function getUserProfileById(id) {
   }
 }
 
+export async function editUserProfile(id, formData) {
+  try {
+    const response = instance.putForm(`/user-profiles/${id}`, formData)
+    const data = response.data;
+
+    return data;
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 export async function getUser(id) {
   try {
     const response = await instance({
