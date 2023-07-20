@@ -50,8 +50,8 @@ export default function SkillPage() {
   const handleSaveSkill = async () => {
 
       const data = await addUserSkill({
-        name: skillRef.
-        level
+        name: skillRef.current.value,
+        level: levelRef.current.value
       })
       console.log(data)
       Swal.fire({
@@ -60,6 +60,7 @@ export default function SkillPage() {
         showConfirmButton: false,
         timer: 1500
       })
+      fetchProfile()
   }
 
   function BasicUsage() {
@@ -84,11 +85,11 @@ export default function SkillPage() {
             <ModalBody>
               <FormControl>
                 <FormLabel>Skill name</FormLabel>
-                <Input placeholder="Example: Crowd Control" onChange={(e) => setSkill(e.target.value)} />
+                <Input placeholder="Example: Crowd Control" ref={skillRef} />
               </FormControl>
               <FormControl className="pt-5">
                 <FormLabel>Level</FormLabel>
-                <Select placeholder="">
+                <Select placeholder="" ref={levelRef}>
                   <option value="beginner">Beginner</option>
                   <option value="advance">Advance</option>
                   <option value="expert">Expert</option>

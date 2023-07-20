@@ -100,12 +100,12 @@ export async function deleteSkill(param) {
 
 export async function addUserSkill(params) {
   try {
-    const { skill, level } = params
+    const { name, level } = params
     const response = await instance({
       method: "POST",
       url: `/skills/new`,
       data: {
-        name: skill,
+        name,
         level
       }
     })
