@@ -40,7 +40,7 @@ function JobListing() {
         const dataTypes = await findTypes();
         const dataSkills = await findSkills();
         const dataCompany = await getAllCompanyProfile();
-        setJobList(data);
+        setJobList(data.job_listing);
         setTypes(dataTypes);
         setSkills(dataSkills);
         setCompanies(dataCompany);
@@ -146,7 +146,7 @@ function JobListing() {
     let params = {
       page: +el,
     };
-    setPage(+el)
+    setPage(+el);
     refetchData(params);
   };
 
@@ -195,16 +195,16 @@ function JobListing() {
 
       <div className="mt-[20px] flex justify-center">
         {/* Search */}
-        
-          <input
-            className="w-7/12 rounded-full border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-            type="text"
-            name="q"
-            placeholder="Cari..."
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-          />
-        
+
+        <input
+          className="w-7/12 rounded-full border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+          type="text"
+          name="q"
+          placeholder="Cari..."
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+        />
+
         <button
           onClick={handleSearch}
           type="button"
@@ -315,7 +315,7 @@ function JobListing() {
       </div>
 
       <div className="mx-auto grid grid-cols-3 gap-5 py-20 container place-items-end px-20">
-        {jobList.job_listing.map((job) => (
+        {jobList.map((job) => (
           <JobCard key={job.id} job={job} />
         ))}
       </div>

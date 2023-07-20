@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jobListing } from "../fetching/job_listing";
-// import Footer from "../components/Footer";
 
 export default function Home() {
   const [jobCard, setJobCard] = useState([]);

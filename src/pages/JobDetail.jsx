@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchJobDetail } from "../fetching/jobDetail";
 
@@ -7,6 +7,7 @@ export default function JobDetail() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +27,10 @@ export default function JobDetail() {
     return <div>Loading...</div>;
   }
 
+  const handleApplyClick = () => {
+    navigate(`/job-apply/${jobDetail.id}`);
+  };
+
   return (
     <div className="flex justify-center">
       <div className="min-w-[80%]">
@@ -39,7 +44,10 @@ export default function JobDetail() {
           </div>
 
           {/* Apply */}
-          <button className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-[20px]">
+          <button
+            onClick={() => handleApplyClick()}
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-[20px]"
+          >
             Apply
           </button>
           {/* Apply End */}
