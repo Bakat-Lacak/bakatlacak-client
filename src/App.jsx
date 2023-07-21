@@ -38,6 +38,7 @@ function App() {
           <Route path="/education" element={<EducationPage />} />
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/skill" element={<SkillPage />} />
+          <Route path="/resume" element={<ResumePage />} />
           <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/job-apply/:id" element={<JobApply />} />
           <Route path="/job-apply-user" element={<JobApplyUser />} />

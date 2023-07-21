@@ -47,7 +47,7 @@ function JobListing() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await jobListing();
+        const data = await jobListing({limit: 12});
         const dataTypes = await findTypes();
         const dataSkills = await findSkills();
         const dataCompany = await getAllCompanyProfile();
@@ -101,6 +101,7 @@ function JobListing() {
 
   const refetchData = async (params) => {
     try {
+      params.limit = 12
       const data = await jobListing(params);
       setJobList(data);
     } catch (err) {
