@@ -28,7 +28,7 @@ function CompanyProfileUser() {
     try {
       const data = await getAllCompanyProfile();
       setCompanyProfiles(data);
-      setIsLoading(true); 
+      setIsLoading(false); 
     } catch (err) {
       console.error("Error fetching company data:", err);
       setIsLoading(false);
