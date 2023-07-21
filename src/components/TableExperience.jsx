@@ -45,6 +45,7 @@ export default function TableExperience({experience, fetchProfile}) {
       showConfirmButton: false,
       timer: 1500
     });
+    fetchProfile()
   }
 
   const handleEducationDelete = async () => {
