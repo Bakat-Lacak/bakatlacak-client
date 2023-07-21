@@ -205,9 +205,9 @@ function JobListing() {
   };
 
   return (
-    <>
+    <div className="bg-mint pb-20">
       {/* Header */}
-      <h1 className="text-4xl text-center font-semibold text-black my-4">
+      <h1 className="text-4xl text-center font-semibold text-black mb-4">
         Jobs
       </h1>
       <div className="flex justify-center shadow-sm py-1">
@@ -355,7 +355,7 @@ function JobListing() {
       </div>
 
       <InitPagination />
-    </>
+    </div>
   );
 }
 

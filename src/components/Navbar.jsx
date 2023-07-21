@@ -56,7 +56,7 @@ function Navbar() {
 
   return (
 
-      <Box bg="white">
+      <Box className="bg-mint">
         <Flex maxW="full" px={4} align="center" h={16}>
           <Box>
             <a href="/">
