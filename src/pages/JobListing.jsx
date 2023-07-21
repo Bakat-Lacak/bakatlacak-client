@@ -11,23 +11,22 @@ import { MultiSelect } from "react-multi-select-component"; // multiple select
 import Select from "react-select"; // single select
 
 let locations = [];
-let typeOptions = [];
-let companyOptions = [];
 
 function JobListing() {
   const setJobList = useStore((state) => state.setJobList);
   const jobList = useStore((state) => state.jobList);
   console.log(jobList);
   const [types, setTypes] = useState([]);
+  const [typesOptions, setTypesOptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
   const [q, setQ] = useState("");
 
   const [filterTypes, setFilterTypes] = useState([]);
   const [filterSalary, setFilterSalary] = useState(0);
-
+  const [companies, setCompanies] = useState([]);
+  const [companiesOption, setCompaniesOption] = useState([]);
   const [skillOptions, setSkillOptions] = useState([]);
-
   const [filterSkill, setFilterSkill] = useState([]);
   const [filterLocations, setFilterLocations] = useState([]);
   const [filterCompany, setFilterCompany] = useState("");
@@ -43,21 +42,30 @@ function JobListing() {
         setJobList(data);
         setTypes(dataTypes);
         setSkills(dataSkills);
+        setCompanies(dataCompany);
         setSkillOptions(
           dataSkills.map((s) => ({
             value: s.id,
             label: `${s.name} ${s.level}`,
           }))
         );
-        typeOptions.push(
-          ...dataTypes.map((t) => ({ value: t.id, label: t.title }))
+        setTypesOptions(
+          dataTypes.map((t) => ({ value: t.id, label: t.title }))
         );
-        companyOptions.push(
-          ...dataCompany.map((company) => ({
+        setCompaniesOption(
+          dataCompany.map((company) => ({
             value: company.id,
             label: company.name,
           }))
         );
+        locations = data.map((el) => el.location);
+        locations = [...new Set(locations)];
+        locations = locations.map((el) => {
+          return {
+            value: el,
+            label: el,
+          };
+        });
         setFilterCompany(""); // Reset filterCompany state
         setLoading(false);
       } catch (error) {
@@ -204,7 +212,7 @@ function JobListing() {
         <div className="flex flex-col space-y-2 w-80">
           <h2 className="text-center">Companies</h2>
           <Select
-            options={companyOptions}
+            options={companiesOption}
             value={filterCompany}
             onChange={setFilterCompany}
           />
@@ -214,7 +222,7 @@ function JobListing() {
           <h2 className="text-center">Types</h2>
           <MultiSelect
             className="w-full"
-            options={typeOptions}
+            options={typesOptions}
             value={filterTypes}
             onChange={setFilterTypes}
             labelledBy="Select..."
