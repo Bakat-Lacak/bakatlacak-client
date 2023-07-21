@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import fetchJobApply from "../fetching/jobApply";
+import fetchJobApply from "../../fetching/jobApply";
 import Swal from "sweetalert2"; 
 
 export default function JobApply() {

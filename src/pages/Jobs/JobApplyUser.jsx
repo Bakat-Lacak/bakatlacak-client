@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchAllJob } from "../fetching/jobApplyById";
-import ApplyCard from "../components/ApplyCard";
+import { fetchAllJob } from "../../fetching/jobApplyById";
+import ApplyCard from "../../components/ApplyCard";
 
 export default function JobApplications() {
   const [applications, setApplications] = useState([]);
@@ -21,8 +21,10 @@ export default function JobApplications() {
 
   return (
     <div>
-      <h1>Job Applications</h1>
-      <div className="mx-auto grid grid-cols-3 gap-5 py-20 container place-items-end px-20">
+      <h1 className="text-4xl text-center font-semibold text-black my-4">
+        Your Applications
+      </h1>
+      <div className="mx-auto grid grid-cols-3 gap-5 py-10 container place-items-end px-20">
         {applications.map((application) => (
           <ApplyCard key={application.id} applications={application} />
         ))}

@@ -13,7 +13,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
-import { useStore } from "../modules/store"
+import { useStore } from "../modules/store";
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -52,10 +52,6 @@ function Navbar() {
 
   const handleClick = () => {
     onToggle();
-  };
-
-  const handleApply = () => {
-    navigate("/job-apply-user")
   };
 
   return (
@@ -110,20 +106,20 @@ function Navbar() {
                 My Profile
               </Button>
             )}
-            {isLoggedIn && (
-            <Button
-              variant="ghost"
-              colorScheme="black"
-              fontWeight="regular"
-              px={4}
-              py={2}
-              rounded="md"
-              fontSize="md"
-              onClick={handleApply}
-            >
-              Applications
-            </Button>
-          )}
+            {["user"].includes(user.role) && ( // conditional for recruiter and admin */}
+           <Button
+           variant="ghost"
+           colorScheme="black"
+           fontWeight="regular"
+           px={4}
+           py={2}
+           rounded="md"
+           fontSize="md"
+           onClick={() => navigate("/job-apply-user")}
+         >
+           Applications
+          </Button>
+         )} 
           </Flex>
           <Spacer />
           <Button
@@ -195,20 +191,14 @@ function Navbar() {
                 My Profile
               </Button>
             )}
-              {["user"].includes(user.role) && (
-            <Button
-              variant="ghost"
-              colorScheme="black"
-              fontWeight="regular"
-              px={4}
-              py={2}
-              rounded="md"
-              fontSize="md"
-              onClick={handleApply}
-            >
-              Applications
-            </Button>
-          )}
+                       {["user"].includes(user.role) && ( // conditional for recruiter and admin */}
+          <button
+            onClick={() => navigate(`/job-apply-user`)}
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
+          >
+           Applications
+          </button>
+         )} 
           </Flex>
           <Spacer />
           <Button

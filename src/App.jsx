@@ -7,15 +7,15 @@ import CompanyProfileUser from "./pages/Companies/companyprofile";
 import Companydetail from "./pages/Companies/companydetail";
 import CompanyCreate from "./pages/Companies/Recruiter/companycreate";
 import CompanyEdit from "./pages/Companies/Recruiter/companyedit";
-import JobListing from "./pages/JobListing";
-import JobDetail from "./pages/JobDetail";
+import JobListing from "./pages/Jobs/JobListing";
+import JobDetail from "./pages/Jobs/JobDetail";
 import Footer from "./components/Footer";
 import UserProfilePage from "./pages/UserProfile";
 import Navbar from "./components/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
-import JobApply from "./pages/JobApply";
-import JobApplyUser from "./pages/JobApplyUser";
+import JobApply from "./pages/Jobs/JobApply";
+import JobApplyUser from "./pages/Jobs/JobApplyUser";
 function App() {
   return (
     <Router>

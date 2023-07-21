@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { jobListing } from "../fetching/job_listing";
-import { findTypes } from "../fetching/type";
-import { findSkills } from "../fetching/skills";
-import { getAllCompanyProfile } from "../fetching/companyprofile";
-import { useStore } from "../modules/store";
-import JobCard from "../components/JobCard";
+import { jobListing } from "../../fetching/job_listing";
+import { findTypes } from "../../fetching/type";
+import { findSkills } from "../../fetching/skills";
+import { getAllCompanyProfile } from "../../fetching/companyprofile";
+import { useStore } from "../../modules/store";
+import JobCard from "../../components/JobCard";
 import { MultiSelect } from "react-multi-select-component"; // multiple select
 import Select from "react-select"; // single select
 import {

@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchJobDetail } from "../fetching/jobDetail";
+import { fetchJobDetail } from "../../fetching/jobDetail"
 
 export default function JobDetail() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
