@@ -63,11 +63,11 @@ export default function TableExperience({experience, fetchProfile}) {
     })
     console.log(data)
         Swal.fire(
-          'Done!',
-          'Experience has been deleted.',
-          'success',
           {
-            timer: 3000
+            icon: 'success',
+            title: 'Experience deleted!',
+            showConfirmButton: false,
+            timer: 1500
           }
         )
         fetchProfile()

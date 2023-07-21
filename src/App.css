@@ -9,5 +9,6 @@
   font-family: 'Nunito', sans-serif;
 }
   
-  
-  
+.swal2-container {
+  z-index: 1500;
+}

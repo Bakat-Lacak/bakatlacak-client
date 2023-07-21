@@ -19,6 +19,13 @@ export default function SideButton() {
                       </Heading>
                     </Box>
                   </Button>
+                  <Button variant="ghost" onClick={() => navigate(`/resume`)}>
+                    <Box>
+                      <Heading size="xs" textTransform="uppercase">
+                        Resume
+                      </Heading>
+                    </Box>
+                  </Button>
                   <Button variant="ghost" onClick={() => navigate(`/education`)} >
                     <Box>
                       <Heading size="xs" textTransform="uppercase">
@@ -30,13 +37,6 @@ export default function SideButton() {
                     <Box>
                       <Heading size="xs" textTransform="uppercase">
                         Experiences
-                      </Heading>
-                    </Box>
-                  </Button>
-                  <Button variant="ghost" onClick={() => navigate(`/resume`)}>
-                    <Box>
-                      <Heading size="xs" textTransform="uppercase">
-                        Resume
                       </Heading>
                     </Box>
                   </Button>

@@ -37,6 +37,7 @@ import {
         showConfirmButton: false,
         timer: 1500
       });
+      fetchProfile()
     }
     const handleEducationDelete = async () => {
       Swal.fire({
@@ -54,11 +55,11 @@ import {
       })
       console.log(data)
           Swal.fire(
-            'Done!',
-            'Education has been deleted.',
-            'success',
             {
-              timer: 3000
+              icon: 'success',
+              title: 'Education deleted!',
+              showConfirmButton: false,
+              timer: 1500
             }
           )
           fetchProfile()

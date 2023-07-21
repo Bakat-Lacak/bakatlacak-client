@@ -31,13 +31,12 @@ import {
         id: userSkill.Skill.id
       })
       console.log(data)
-          Swal.fire(
-            'Done!',
-            'Education has been deleted.',
-            'success',
-            {
-              timer: 3000
-            }
+          Swal.fire({
+            icon: 'success',
+            title: 'Skill deleted!',
+            showConfirmButton: false,
+            timer: 1500
+          }
           )
           fetchProfile()
         }

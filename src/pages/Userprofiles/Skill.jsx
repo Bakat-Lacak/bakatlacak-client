@@ -47,26 +47,44 @@ export default function SkillPage() {
 
   const handleSaveSkill = async () => {
 
-      const data = await addUserSkill({
-        name: skillRef.current.value,
-        level: levelRef.current.value
-      })
-      console.log(data)
-      Swal.fire({
-        icon: 'success',
-        title: 'Skill added!',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      fetchProfile()
+      const textSkill = skillRef.current.value
+      const textLevel = levelRef.current.value
+
+      if(!skillRef.current.value) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops! please insert skill',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        const data = await addUserSkill({
+          name: textSkill,
+          level: textLevel
+        })
+        
+        console.log(data)
+        Swal.fire({
+          icon: 'success',
+          title: 'Skill added!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        fetchProfile()
+      }
   }
 
-  function BasicUsage() {
+  function ButtonAddSkill() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     
     const combinedClick = () => {
-      onClose()
-      handleSaveSkill()
+      if(!skillRef.current.value) {
+        handleSaveSkill()
+      } else {
+        handleSaveSkill()
+        onClose()
+      }
+      
     }
 
     return (
@@ -75,7 +93,7 @@ export default function SkillPage() {
           Add new skill
         </Button>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Add new skill!</ModalHeader>
@@ -112,7 +130,7 @@ export default function SkillPage() {
   return (
     <>
       <div className="flex flex-row-reverse pr-20">
-        <BasicUsage></BasicUsage>
+        <ButtonAddSkill></ButtonAddSkill>
       </div>
       <Flex>
         <SideButton />
