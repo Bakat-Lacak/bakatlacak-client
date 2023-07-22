@@ -132,7 +132,7 @@ function Navbar() {
            Applications
           </Button>
           )}
-          {["recruiter"].includes(user.role) && ( // conditional for recruiter and admin */}
+          {isLoggedIn && ["recruiter"].includes(user.role) && ( // conditional for recruiter and admin */}
           <Button
           variant="ghost"
           colorScheme="black"
