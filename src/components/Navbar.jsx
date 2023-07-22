@@ -128,7 +128,20 @@ function Navbar() {
            Applications
           </Button>
           )}
-
+          {["recruiter"].includes(user.role) && ( // conditional for recruiter and admin */}
+          <Button
+          variant="ghost"
+          colorScheme="black"
+          fontWeight="regular"
+          px={4}
+          py={2}
+          rounded="md"
+          fontSize="md"
+          onClick={navigate("/post-job")}
+        >
+          Create Job
+         </Button>
+         )} 
           </Flex>
           <Spacer />
           <Button
