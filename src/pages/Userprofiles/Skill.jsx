@@ -129,16 +129,16 @@ export default function SkillPage() {
 
   return (
     <>
-      <div className="flex flex-row-reverse pr-20 bg-mint">
+      <div className="flex flex-row-reverse pr-[80px] pt-5 bg-mint">
         <ButtonAddSkill></ButtonAddSkill>
       </div>
-      <Flex bgColor="mint">
+      <Flex bgColor="mint" pb={100} shadow="md">
         <SideButton />
-        <VStack flex="1" px={10}>
-          {userSkill.map((userSkill, index) => {
-            return <TableSkill fetchProfile={fetchProfile} userSkill={userSkill} key={index}></TableSkill>;
-          })}
-        </VStack>
+          <div className="ml-5 grid grid-cols-3 gap-1 container place-items-start py-3">
+            {userSkill.map((userSkill, index) => {
+              return <TableSkill fetchProfile={fetchProfile} userSkill={userSkill} key={index}></TableSkill>;
+            })}
+          </div>
       </Flex>
     </>
   );

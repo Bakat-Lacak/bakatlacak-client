@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jobListing } from "../fetching/job_listing";
+import image from "../assets/landingpage.jpg"
 
 export default function Home() {
   const [jobCard, setJobCard] = useState([]);
@@ -25,16 +26,16 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="bg-white ">
+    <section>
       {/* Heading */}
-      <div className="bg-mint max-w-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 w-full h-[40%] shadow-md flex justify-center items-center flex-row">
-        <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-2 lg:items-center lg:gap-x-16 min-h-[500px]">
-          <div className="mx-auto max-w-2lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
-            <h2 className="text-3xl font-bold sm:text-7xl text-[#001C30]">
+      <div className="flex background-home px-4 py-10 w-full h-80% shadow-md justify-center items-center flex-row"></div>
+        <div className="flex lg:items-center lg:gap-x-16 px-40 h-[650px] landing-content">
+          <div className="landing-content max-w-2lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+            <h2 className="text-3xl font-bold sm:text-7xl text-black">
               Find your career path
             </h2>
 
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 font-regular text-black">
               Initiate your journey towards your dream job by uncovering your
               talents through BakatLacak. Exceptional companies, esteemed and
               well-established, actively seek your presence, offering an
@@ -48,8 +49,8 @@ export default function Home() {
               Get Started Today
             </button>
           </div>
-
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+          
+          {/* <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             <a
               className="block rounded-xl border border-[#176B87] p-4 shadow-md hover:border-[#001C30] hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring hover:shadow-[#001c3094] bg-white"
               href="/job"
@@ -207,9 +208,8 @@ export default function Home() {
                 Lorem ipsum dolor sit amet consectetur.
               </p>
             </a>
-          </div>
+          </div> */}
         </div>
-      </div>
       {/* Heading End */}
 
       {/* Flow */}

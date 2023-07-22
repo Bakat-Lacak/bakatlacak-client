@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
-
 .font-outfit {
   font-family: 'Outfit', sans-serif;
 }
@@ -12,6 +11,34 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #DAFFFB;
+}
+
+/* Add transition properties to smoothly animate the transformation */
+.job-card {
+  transition: transform 0.3s ease;
+}
+
+/* Apply the scale transformation on hover */
+.job-card:hover {
+  transform: scale(1.1);
+}
+
+.swal2-container {
+  z-index: 1500;
+}
+
+.background-home {
+  background-image: url(assets/landingpage.jpg);
+  background-size: contain;
+    filter: blur(4px) opacity(40%);
+    position: absolute;
+    z-index: -1;
+    height: 80%
+}
+
+.landing-content {
+  z-index: 9999;
+  filter: none;
 }
 
 /* Add transition properties to smoothly animate the transformation */

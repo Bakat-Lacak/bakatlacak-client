@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchJobDetail } from "../../fetching/jobDetail"
+import { fetchJobDetail } from "../../fetching/jobDetail";
 
 export default function JobDetail() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,11 +32,11 @@ export default function JobDetail() {
   };
 
   const handleCompanyDetail = () => {
-    navigate(`/companydetail/${id}`)
-  }
+    navigate(`/companydetail/${id}`);
+  };
 
   return (
-    <div className="flex justify-center pb-60">
+    <div className="flex justify-center py-4 px-10">
       <div className="min-w-[80%]">
         <div>
           {/* Header */}
@@ -59,9 +58,9 @@ export default function JobDetail() {
 
           {/* Job Information Card */}
           <div className="mt-[20px] p-3 border-black border-2 rounded-md">
-            <div className="grid grid-cols-3 gap-4">
+            <div>
               {/* Type */}
-              <div>
+              <div className="grid grid-cols-3 gap-4 py-6 rounded-xl shadow-md">
                 <div className="flex flex-col items-center">
                   <h3 className="text-md font-bold">Type</h3>
                   <div>
@@ -73,73 +72,70 @@ export default function JobDetail() {
                       ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Location */}
-              <div>
-                <div className="flex flex-col items-center">
-                  <h3 className="text-md font-bold">Location</h3>
-                  <p>{jobDetail.location}</p>
-                </div>
-              </div>
-
-              {/* Salary */}
-              <div>
-                <div className="flex flex-col items-center">
-                  <h3 className="text-md font-bold">Salary</h3>
-                  <p>
-                    {jobDetail.salary_start} - {jobDetail.salary_end}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Job Information Card End */}
-
-          {/* Description */}
-          <h2 className="mt-10 mb-0 font-semibold">Job Description</h2>
-          <div className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
-            <p>{jobDetail.description}</p>
-          </div>
-          {/* Description End */}
-
-        {/* Requirement Card */}
-        <h2 className="mb-0 mt-10 font-semibold">Job Requirements</h2>
-        <div className=" p-3 border-black border-2 rounded-md">
-            
-            <div className="grid grid-cols-4 gap-4">
-              {jobDetail.Skills &&
-                jobDetail.Skills.map((skill) => (
-                  <div
-                    key={skill.id}
-                    className="min-w-[120px] mb-3 p-3 rounded-md"
-                  >
-                    <div className="flex flex-col items-center">
-                      <h3 className="text-md font-bold">{skill.name}</h3>
-                      <div>
-                        <p>{skill.level}</p>
-                      </div>
-                    </div>
+                {/* Location */}
+                  <div className="flex flex-col items-center">
+                    <h3 className="text-md font-bold">Location</h3>
+                    <p>{jobDetail.location}</p>
                   </div>
-                ))}
+
+                  {/* Salary */}
+
+                  <div className="flex flex-col items-center">
+                    <h3 className="text-md font-bold">Salary</h3>
+                    <p>
+                      {jobDetail.salary_start} - {jobDetail.salary_end}
+                    </p>
+                  </div>
+              </div>
+
+              {/* Job Information Card End */}
+
+              {/* Description */}
+              <h2 className="mt-10 mb-0 font-semibold">Job Description</h2>
+              <div className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
+                <p>{jobDetail.description}</p>
+              </div>
+              {/* Description End */}
+
+              {/* Requirement Card */}
+              <h2 className="mb-0 mt-10 font-semibold">Job Requirements</h2>
+              <div className=" p-0 shadow-md rounded-xl">
+                <div className="grid grid-cols-4 gap-4 mb-0">
+                  {jobDetail.Skills &&
+                    jobDetail.Skills.map((skill) => (
+                      <div
+                        key={skill.id}
+                        className="min-w-[120px] mb-3 p-3 rounded-md"
+                      >
+                        <div className="flex flex-col items-center">
+                          <h3 className="text-md font-bold">{skill.name}</h3>
+                          <div>
+                            <p>{skill.level}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+              {/* Requirement Card End */}
+
+              {/* About Company */}
+              <h2 className="mt-10 font-semibold">
+                About {jobDetail.CompanyProfile?.name}
+              </h2>
+              <h3 className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
+                {jobDetail.CompanyProfile?.description}
+              </h3>
+              <button
+                onClick={handleCompanyDetail}
+                className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[30px] mb-[10px]"
+              >
+                Company Detail
+              </button>
+              {/* About Company End */}
             </div>
           </div>
-          {/* Requirement Card End */}
-
-          {/* About Company */}
-          <h2 className="mt-10 mb-0 font-semibold">
-            About {jobDetail.CompanyProfile?.name}
-          </h2>
-          <h3 className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
-            {jobDetail.CompanyProfile?.description}
-          </h3>
-          <button
-            onClick={handleCompanyDetail}
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
-          >
-            Company Detail
-          </button>
-          {/* About Company End */}
         </div>
       </div>
     </div>

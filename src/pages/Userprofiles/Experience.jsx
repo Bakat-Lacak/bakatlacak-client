@@ -20,6 +20,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Textarea
 } from "@chakra-ui/react";
 import { getExperience, addExperience } from "../../fetching/experience";
 import { useStore } from "../../modules/store";
@@ -139,7 +140,7 @@ export default function ExperiencePage() {
               </FormControl>
               <FormControl className="py-1">
                 <FormLabel>Description</FormLabel>
-                <Input
+                <Textarea
                   placeholder="Your job description"
                   ref={descriptionRef}
                 />
@@ -176,12 +177,12 @@ export default function ExperiencePage() {
 
   return (
     <>
-      <div className="flex flex-row-reverse pr-20">
+      <div className="flex flex-row-reverse pr-20 pt-5 bg-mint">
         <ButtonAddExperience></ButtonAddExperience>
       </div>
-      <Flex>
+      <Flex bg="mint" shadow="md" pb={100} >
         <SideButton />
-        <VStack flex="1">
+        <VStack flex="1" pl={5}>
           {experience.map((experience, index) => {
             return (
               <TableExperience
