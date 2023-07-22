@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { FaFileLines } from "react-icons/fa6";
+import { editUserProfile } from "../fetching/userProfile";
 
 export default function TableResume({ profile }) {
 
@@ -24,19 +25,30 @@ export default function TableResume({ profile }) {
   const [resume, setResume] = useState(profile.resume)
   const [portofolio, setPortofolio] = useState(profile.portofolio)
 
+  const handleEditProfile = async () => {
   const formData = new FormData()
+
   formData.append("about_me", aboutMe)
   formData.append("salary_expectation", salary)
   formData.append("resume", resume)
   formData.append("portofolio", portofolio)
-  
+
+  const dataProfile = await editUserProfile(formData)
+  console.log(dataProfile)
+  Swal.fire({
+    title: "Update Success",
+    icon: "success",
+    showConfirmButton: false,
+    timer: 1500
+  });
+  }
 
   return (
     <Box className="pr-20 pt-5 pb-20 w-full">
       <TableContainer className="border-2 border-solid rounded-xl bg-white shadow-xl" alt="basic info">
         <Table size="sm" mt={5}>
           <TableCaption>
-            <Button variant="solid">Save</Button>
+            <Button variant="solid" onClick={handleEditProfile}>Save</Button>
           </TableCaption>
           <Thead>
             <Tr>
