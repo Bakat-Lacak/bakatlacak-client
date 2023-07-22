@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
+import convertToRupiah from "../lib/converty";
 
 export default function JobCard({ job }) {
+  const dateOnly = new Date(job.limit_date).toLocaleDateString();
   const navigate = useNavigate();
   const handleDetail = (id) => {
     navigate(`/job/${id}`);
@@ -18,15 +20,20 @@ export default function JobCard({ job }) {
           />
           <div>
             <h3 className="text-sm font-bold text-black">
-              {job.CompanyProfile.name}
+              {job.CompanyProfile?.name}
             </h3>
+
             <span className="text-sm text-black">{job.location}</span>
           </div>
         </div>
         <div className="py-1">
-          <h3 className="text-lg font-medium text-black">{job.title}</h3>
+          <div className="flex justify-between">
+            <h3 className="text-lg font-medium text-black">{job.title}</h3>
+            <h3 className="text-sm text-black pr-3">{dateOnly}</h3>
+          </div>
           <div className="my-1 text-sm text-black">
-            {job.salary_start} - {job.salary_end}
+            {convertToRupiah(job.salary_start)} -{" "}
+            {convertToRupiah(job.salary_end)}
           </div>
         </div>
         <div className="flex items-center justify-between">

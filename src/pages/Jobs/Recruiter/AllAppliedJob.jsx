@@ -7,7 +7,6 @@ export default function AllAppliedJob() {
   const [applications, setApplications] = useState([]);
   const navigate = useNavigate();
 
-
   const handleClickDetail = (id) => {
     navigate(`/applied-job/${id}`);
   };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jobListing } from "../fetching/job_listing";
-import image from "../assets/landingpage.jpg"
+import convertToRupiah from "../lib/converty";
 
 export default function Home() {
   const [jobCard, setJobCard] = useState([]);
@@ -19,7 +19,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const data = await jobListing();
-        setJobCard(data.job_listing.slice(0, 6));
+        setJobCard(data.slice(0, 6));
       } catch (error) {
         console.log(error);
       }
@@ -157,7 +157,7 @@ export default function Home() {
                 </h3>
 
                 <div className="mt-2 text-sm text-black">
-                  {jobCard.salary_start} - {jobCard.salary_end}
+                  {convertToRupiah(jobCard.salary_start)} - {convertToRupiah(jobCard.salary_end)}
                 </div>
               </div>
               <button
