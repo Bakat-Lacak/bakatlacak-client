@@ -74,17 +74,12 @@ export default function TableResume({ profile }) {
                 Current Resume
               </Td>
               <Td>
-<<<<<<< HEAD
-                <a href={profile.resume}>
-                <IconButton boxSize={20} fontSize={30} icon={<FaFileLines />}></IconButton>
-=======
                 <a href={profile.resume}>
                   <IconButton
                     boxSize={20}
                     fontSize={30}
                     icon={<FaFileLines />}
                   ></IconButton>
->>>>>>> aef1005b10a8a5ae3a4437f3ebd67551c0470e74
                 </a>
                 <p>{profile.resume}</p>
               </Td>
