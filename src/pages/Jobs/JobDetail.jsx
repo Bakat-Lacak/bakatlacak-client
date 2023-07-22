@@ -2,12 +2,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchJobDetail } from "../../fetching/jobDetail";
+import { useStore } from "../../modules/store";
+import Loading from "../../components/Loading"
 
 export default function JobDetail() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const user = useStore((state) => state.user);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,11 +27,17 @@ export default function JobDetail() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    <Loading />
+    return 
   }
 
   const handleApplyClick = () => {
-    navigate(`/job-apply/${jobDetail.id}`);
+    if (["recruiter"].includes(user.role)) {
+      navigate(`/applied-job/${jobDetail.id}`);
+    } else {
+      navigate(`/job-apply/${jobDetail.id}`);
+    }
+
   };
 
   const handleCompanyDetail = () => {
@@ -36,23 +45,24 @@ export default function JobDetail() {
   };
 
   return (
-    <div className="flex justify-center py-4 px-10">
-      <div className="min-w-[80%]">
+    <div className="flex justify-center py-4 px-10 bg-mint">
+      <div className="min-w-[1000px]">
         <div>
           {/* Header */}
           <div className="mt-[40px]">
             <h2 className="font-normal">{jobDetail.CompanyProfile?.name}</h2>
 
-            <h1 className="text-4xl font-semibold">{jobDetail.title}</h1>
+            <h1 className="text-6xl font-semibold">{jobDetail.title}</h1>
             {/* Header End */}
           </div>
 
           {/* Apply */}
+          
           <button
             onClick={() => handleApplyClick()}
             className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
           >
-            Apply
+          {["recruiter"].includes(user.role) ? "Applications" : "Apply"}
           </button>
           {/* Apply End */}
 
@@ -89,14 +99,16 @@ export default function JobDetail() {
                   </div>
               </div>
 
-              {/* Job Information Card End */}
-
-              {/* Description */}
-              <h2 className="mt-10 mb-0 font-semibold">Job Description</h2>
-              <div className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
-                <p>{jobDetail.description}</p>
+             {/* Location */}
+              <div>
+              <h2 className="mt-10 font-semibold">
+                About
+              </h2>
+              <h3 className="bg-black bg-opacity-20 rounded-md p-4 border-black border-opacity-80">
+                {jobDetail.description}
+              </h3>
               </div>
-              {/* Description End */}
+              {/* Description End */} 
 
               {/* Requirement Card */}
               <h2 className="mb-0 mt-10 font-semibold">Job Requirements</h2>

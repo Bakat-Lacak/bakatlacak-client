@@ -54,6 +54,14 @@ function Navbar() {
     onToggle();
   };
 
+  const handleAppli = () => {
+    if (["recruiter"].includes(user.role)) {
+      navigate("/all-applied-job");
+    } else {
+      navigate("/job-apply-user");
+    }
+  }
+
   return (
 
       <Box className="bg-mint">
@@ -106,7 +114,7 @@ function Navbar() {
                 My Profile
               </Button>
             )}
-            {["user"].includes(user.role) && ( // conditional for recruiter and admin */}
+          {isLoggedIn && (
            <Button
            variant="ghost"
            colorScheme="black"
@@ -115,11 +123,12 @@ function Navbar() {
            py={2}
            rounded="md"
            fontSize="md"
-           onClick={() => navigate("/job-apply-user")}
+           onClick={handleAppli}
          >
            Applications
           </Button>
-         )} 
+          )}
+
           </Flex>
           <Spacer />
           <Button
