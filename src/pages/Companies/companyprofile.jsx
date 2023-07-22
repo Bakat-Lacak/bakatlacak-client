@@ -68,6 +68,7 @@ function CompanyProfileUser() {
                 bg="white"
                 p={4}
                 rounded="xl"
+                className="job-card"
               >
                 <Box mt={2}>
                   <Heading

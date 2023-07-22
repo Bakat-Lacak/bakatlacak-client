@@ -30,7 +30,7 @@ body {
 .background-home {
   background-image: url(assets/landingpage.jpg);
   background-size: contain;
-    filter: blur(4px) opacity(40%);
+    filter: blur(2px) opacity(50%);
     position: absolute;
     z-index: -1;
     height: 80%

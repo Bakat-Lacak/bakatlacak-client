@@ -82,7 +82,7 @@ export default function TableExperience({experience, fetchProfile}) {
 
     return (
         <Box className="pr-20 pt-5 pb-20 w-full">
-          <TableContainer className="border-2 border-solid rounded-xl" alt="Education">
+          <TableContainer className="border-2 border-solid rounded-xl bg-white shadow-xl" alt="Education">
             <Table size="sm" mt={5}>
               <TableCaption>
                 <Button className="mx-2" variant="solid" onClick={handleEditExperience}>Save</Button>
