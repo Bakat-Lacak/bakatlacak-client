@@ -14,8 +14,8 @@ import {
   Input,
   Textarea
 } from "@chakra-ui/react";
-import { IconButton } from '@chakra-ui/react'
-import { FaFileLines } from "react-icons/fa6"
+import { IconButton } from "@chakra-ui/react";
+import { FaFileLines } from "react-icons/fa6";
 
 export default function TableResume({ profile }) {
 
@@ -33,8 +33,8 @@ export default function TableResume({ profile }) {
 
   return (
     <Box className="pr-20 pt-5 pb-20 w-full">
-      <TableContainer className="border-2 border-solid" alt="basic info">
-        <Table size='sm'>
+      <TableContainer className="border-2 border-solid rounded-xl bg-white shadow-xl" alt="basic info">
+        <Table size="sm" mt={5}>
           <TableCaption>
             <Button variant="solid">Save</Button>
           </TableCaption>
@@ -46,34 +46,53 @@ export default function TableResume({ profile }) {
           </Thead>
           <Tbody>
             <Tr>
-              <Td fontSize="lg" width="25%">About Me</Td>
+              <Td fontSize="lg" width="25%">
+                About Me
+              </Td>
               <Td>
                 <Textarea type="text" defaultValue={profile.about_me} onChange={(e) => setAboutMe(e.target.value)} />
               </Td>
             </Tr>
             <Tr>
-              <Td fontSize="lg" width="25%">Salary Expectation</Td>
+              <Td fontSize="lg" width="25%">
+                Salary Expectation
+              </Td>
               <Td>
                 <Input type="text" defaultValue={profile.salary_expectation} onChange={(e) => setSalary(e.target.value)} />
               </Td>
             </Tr>
             <Tr>
-              <Td fontSize="lg" width="25%">Add resume</Td>
+              <Td fontSize="lg" width="25%">
+                Add resume
+              </Td>
               <Td>
                 <Input type="file"  onChange={(e) => setResume(e.target.files[0])}/>
               </Td>
             </Tr>
             <Tr>
-              <Td fontSize="lg" width="25%">Current Resume</Td>
+              <Td fontSize="lg" width="25%">
+                Current Resume
+              </Td>
               <Td>
+<<<<<<< HEAD
                 <a href={profile.resume}>
                 <IconButton boxSize={20} fontSize={30} icon={<FaFileLines />}></IconButton>
+=======
+                <a href={profile.resume}>
+                  <IconButton
+                    boxSize={20}
+                    fontSize={30}
+                    icon={<FaFileLines />}
+                  ></IconButton>
+>>>>>>> aef1005b10a8a5ae3a4437f3ebd67551c0470e74
                 </a>
                 <p>{profile.resume}</p>
               </Td>
             </Tr>
             <Tr>
-              <Td fontSize="lg" width="25%">Portofolio</Td>
+              <Td fontSize="lg" width="25%">
+                Portofolio
+              </Td>
               <Td>
                 <Input type="text" defaultValue={profile.portofolio} onChange={(e) => setPortofolio(e.target.files[0])} />
               </Td>
