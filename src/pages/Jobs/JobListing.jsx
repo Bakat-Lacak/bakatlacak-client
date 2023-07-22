@@ -163,7 +163,6 @@ function JobListing() {
 
   const InitPagination = () => {
     const pageNumbers = [];
-
     for (let i = 0; i < jobList.totalPages; i++) {
       pageNumbers.push(i + 1);
     }
@@ -343,7 +342,7 @@ function JobListing() {
       )}
 
       <div className="flex mx-[2px] grid grid-cols-4 gap-2 py-10 place-items-end px-20">
-        {jobList.map((job) => (
+        {jobList.job_listing.map((job) => (
           <JobCard key={job.id} job={job} className="job-card" />
         ))}
       </div>

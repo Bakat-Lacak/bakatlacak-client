@@ -5,12 +5,14 @@ import { updateStatus } from "../../../fetching/updateStatus";
 import { IconButton } from "@chakra-ui/react";
 import { FaFileLines } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 export default function AppliedJobByID() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
   const navigate = useNavigate();
   const [status, setStatus] = useState([]);
+  const [success, setSuccess] = useState(false);
   console.log(status);
 
   useEffect(() => {
@@ -34,6 +36,16 @@ export default function AppliedJobByID() {
 
       const updatedData = await fetchAppliedById(id);
       setJobDetail(updatedData);
+      setSuccess(true);
+      Swal.fire({
+        icon: "success",
+        title: "Status Updated!",
+        timer: 3000,
+        timerProgressBar: false,
+        onClose: () => {
+          setSuccess(false);
+        },
+      });
       console.log("Status updated successfully!");
     } catch (error) {
       console.error("Error updating status:", error);
@@ -58,6 +70,42 @@ export default function AppliedJobByID() {
               <h1 className="text-6xl font-semibold">
                 {jobDetail.JobListing?.title}
               </h1>
+            </div>
+
+            <div className="mt-[60px] mr-[200px]">
+              {/* user Side */}
+              <div className="flex gap-2 mt-5 text-[20px] font-semibold">
+                <h1>{jobDetail.User?.first_name}</h1>
+                <h1>{jobDetail.User?.last_name}</h1>
+              </div>
+              <a href={jobDetail.resume}>
+                <IconButton
+                  boxSize={20}
+                  fontSize={30}
+                  icon={<FaFileLines />}
+                ></IconButton>
+              </a>
+              <div className="mt-5">{jobDetail.resume}</div>
+
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="p-2 border border-gray-300 rounded-md placeholder-font-light placeholder-text-gray-500 mr-4"
+              >
+                <option value="" disabled defaultValue>
+                  Choose your role
+                </option>
+                <option value="onreview">onreview</option>
+                <option value="accepted">accepted</option>
+                <option value="rejected">rejected</option>
+              </select>
+
+              <button
+                onClick={handleSubmit}
+                className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
+              >
+                Confirm
+              </button>
             </div>
             {/* Header End */}
           </div>

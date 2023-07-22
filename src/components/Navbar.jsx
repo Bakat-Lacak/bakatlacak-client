@@ -143,6 +143,7 @@ function Navbar() {
          </Button>
          )} 
           </Flex>
+          
           <Spacer />
           <Button
             bg="black"
