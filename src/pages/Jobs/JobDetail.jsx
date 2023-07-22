@@ -57,10 +57,10 @@ export default function JobDetail() {
           {/* Apply End */}
 
           {/* Job Information Card */}
-          <div className="mt-[20px] p-3 border-black border-2 rounded-md">
+          <div className="mt-[20px] p-3">
             <div className="grid grid-cols-3 gap-4">
               {/* Type */}
-              <div>
+              <div className="border-2 rounded-full">
                 <div className="flex flex-col items-center">
                   <h3 className="text-md font-bold">Type</h3>
                   <div>
@@ -75,7 +75,7 @@ export default function JobDetail() {
               </div>
 
               {/* Location */}
-              <div>
+              <div className="border-2 rounded-full">
                 <div className="flex flex-col items-center">
                   <h3 className="text-md font-bold">Location</h3>
                   <p>{jobDetail.location}</p>
@@ -83,7 +83,7 @@ export default function JobDetail() {
               </div>
 
               {/* Salary */}
-              <div>
+              <div className="border-2 rounded-full">
                 <div className="flex flex-col items-center">
                   <h3 className="text-md font-bold">Salary</h3>
                   <p>
@@ -108,6 +108,7 @@ export default function JobDetail() {
             <div className="grid grid-cols-4 gap-4">
               {jobDetail.Skills &&
                 jobDetail.Skills.map((skill) => (
+                  <div className="border-2 rounded-3xl" >
                   <div
                     key={skill.id}
                     className="min-w-[120px] mb-3 p-3 rounded-md"
@@ -118,6 +119,7 @@ export default function JobDetail() {
                         <p>{skill.level}</p>
                       </div>
                     </div>
+                  </div>
                   </div>
                 ))}
             </div>

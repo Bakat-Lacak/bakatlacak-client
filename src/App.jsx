@@ -22,6 +22,8 @@ import JobApply from "./pages/Jobs/JobApply";
 import JobApplyUser from "./pages/Jobs/JobApplyUser";
 import AllAppliedJob from "./pages/Jobs/Recruiter/AllAppliedJob";
 import AppliedJobByID from "./pages/Jobs/Recruiter/AppliedJobByID";
+import PostJob from "./pages/PostJob";
+
 function App() {
   return (
     <Router>
@@ -47,6 +49,7 @@ function App() {
           {/* Recruiter */}
           <Route path="/all-applied-job" element={<AllAppliedJob />} />
           <Route path="/applied-job/:id" element={<AppliedJobByID />} />
+          <Route path="/post-job" element={<PostJob />} />
         </Routes>
         <Footer />
       </ChakraProvider>
