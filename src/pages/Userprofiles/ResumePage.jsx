@@ -1,12 +1,31 @@
-import { useState, useEffect, React } from "react";
-import { CardBody, Card } from "@chakra-ui/card";
-import { Box, Heading, Stack, StackDivider } from "@chakra-ui/layout";
-import { Button, Flex, VStack } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, React, useRef } from "react";
 import { getUserProfileById } from "../../fetching/userProfile";
 import { useStore } from "../../modules/store";
 import TableResume from "../../components/TableResume";
 import SideButton from "../../components/SideButton";
+import {
+  Button,
+  Flex,
+  VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Textarea
+} from "@chakra-ui/react";
 
 export default function ResumePage() {
     const [profile, setProfile] = useState({});
@@ -31,6 +50,10 @@ export default function ResumePage() {
 
     return (
         <>
+                <Button colorScheme="green" onClick={onOpen} w={200}>
+          Add new experience
+        </Button>
+
         <Flex className="pt-10 bg-mint shadow-md">
         <SideButton />
           <VStack flex="1" pb={50} pl={5}>

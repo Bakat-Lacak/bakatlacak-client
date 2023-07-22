@@ -25,6 +25,17 @@ export async function editUserProfile(formData) {
   }
 }
 
+export async function addUserProfile(formData) {
+  try {
+    const response = instance.postForm(`/user-profiles`, formData)
+    const data = response.data
+
+    return data;
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export async function editUser(params) {
   try {
     const {
