@@ -1,49 +1,96 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAppliedById } from "../../../fetching/appliedJobById";
+import { updateStatus } from "../../../fetching/updateStatus";
+import { IconButton } from "@chakra-ui/react";
+import { FaFileLines } from "react-icons/fa6";
 
 export default function AppliedJobByID() {
   const { id } = useParams();
   const [jobDetail, setJobDetail] = useState({});
+  const [status, setStatus] = useState([]);
+  console.log(status);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchAppliedById(id);
         setJobDetail(data);
+        setStatus(data.status);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchData();
-    console.log(jobDetail);
   }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await updateStatus(id, status);
+
+      const updatedData = await fetchAppliedById(id);
+      setJobDetail(updatedData);
+      console.log("Status updated successfully!");
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
 
   return (
     <div className="flex justify-center pb-60">
       <div className="min-w-[80%]">
         <div>
-          {/* Header */}
-          <div className="mt-[40px]">
-            <h2 className="font-normal">
-              {jobDetail.JobListing?.CompanyProfile?.name}
-            </h2>
+          <div className="flex justify-between">
+            {/* Header */}
+            <div className="mt-[40px] ">
+              <h2 className="font-normal">
+                {jobDetail.JobListing?.CompanyProfile?.name}
+              </h2>
 
-            <h1 className="text-4xl font-semibold">
-              {jobDetail.JobListing?.title}
-            </h1>
+              <h1 className="text-6xl font-semibold">
+                {jobDetail.JobListing?.title}
+              </h1>
+            </div>
+
+            <div className="mt-[60px] mr-[200px]">
+              {/* user Side */}
+              <div className="flex gap-2 mt-5 text-[20px] font-semibold">
+                <h1>{jobDetail.User?.first_name}</h1>
+                <h1>{jobDetail.User?.last_name}</h1>
+              </div>
+              <a href={jobDetail.resume}>
+                <IconButton
+                  boxSize={20}
+                  fontSize={30}
+                  icon={<FaFileLines />}
+                ></IconButton>
+              </a>
+              <div className="mt-5">{jobDetail.resume}</div>
+
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="p-2 border border-gray-300 rounded-md placeholder-font-light placeholder-text-gray-500 mr-4"
+              >
+                <option value="" disabled defaultValue>
+                  Choose your role
+                </option>
+                <option value="onreview">onreview</option>
+                <option value="accepted">accepted</option>
+                <option value="rejected">rejected</option>
+              </select>
+
+              <button
+                onClick={handleSubmit}
+                className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
+              >
+                Confirm
+              </button>
+            </div>
             {/* Header End */}
           </div>
-
-          {/* Apply */}
-          <button
-            // onClick={() => handleApplyClick()}
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
-          >
-            Apply
-          </button>
-          {/* Apply End */}
 
           {/* Job Information Card */}
           <div className="mt-[20px] p-3 border-black border-2 rounded-md">
