@@ -14,9 +14,9 @@ export async function getUserProfileById(id) {
   }
 }
 
-export async function editUserProfile(id, formData) {
+export async function editUserProfile(formData) {
   try {
-    const response = instance.putForm(`/user-profiles/${id}`, formData)
+    const response = instance.putForm(`/user-profiles/update`, formData)
     const data = response.data;
 
     return data;
