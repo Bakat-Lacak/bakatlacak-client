@@ -3,8 +3,8 @@
 
 export default function ApplyCard({ applications }) {
   return (
-    <div className="w-full h-full max-w-xs shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <div className="w-full h-full group bg-black p-4 rounded-sm job-card rounded-xl">
+    <div className="w-full h-full max-w-xs shadow-md hover:shadow-xl rounded-xl transition-shadow duration-300 ease-in-out">
+      <div className="w-full h-full group bg-white p-4 job-card rounded-xl">
         <div className="flex items-center gap-x-2">
           <img
             className="aspect-[2/2] w-16"
@@ -12,14 +12,14 @@ export default function ApplyCard({ applications }) {
             alt="Company Logo"
           />
           <div>
-            <h3 className="text-xl font-bold text-white">
+            <h3 className="text-xl font-bold text-black">
               {applications.CompanyProfile?.name}
             </h3>
-            <span className="text-xs text-white">{applications.location}</span>
+            <span className="text-xs text-black">{applications.location}</span>
           </div>
         </div>
         <div className="my-4">
-          <h3 className="text-2xl font-medium text-white">
+          <h3 className="text-2xl font-medium text-black">
             {applications.title}
           </h3>
           <div className="mt-2 text-sm text-white">
@@ -27,7 +27,7 @@ export default function ApplyCard({ applications }) {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <div className="text-white">
+          <div className="text-navy">
           {applications.JobApplications.map((application) => (
           <div className="flex items-center uppercase" key={application.id}>
             {application.status === 'applied' && (
@@ -43,7 +43,7 @@ export default function ApplyCard({ applications }) {
               </div>
             )}
             {application.status === 'accepted' && (
-              <div className="text-white mr-1">
+              <div className="text-black mr-1">
                 <svg
                   className="w-5 h-5 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
