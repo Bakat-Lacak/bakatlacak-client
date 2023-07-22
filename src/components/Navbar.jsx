@@ -54,6 +54,10 @@ function Navbar() {
     onToggle();
   };
 
+  const handleJob = () => {
+    navigate("/post-job");
+  };
+
   const handleAppli = () => {
     if (["recruiter"].includes(user.role)) {
       navigate("/all-applied-job");
@@ -137,7 +141,7 @@ function Navbar() {
           py={2}
           rounded="md"
           fontSize="md"
-          onClick={navigate("/post-job")}
+          onClick={handleJob}
         >
           Create Job
          </Button>
