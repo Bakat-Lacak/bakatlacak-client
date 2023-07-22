@@ -8,17 +8,18 @@ import {
   IconButton,
   Collapse,
   useDisclosure,
-  VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
+import { useStore } from "../modules/store";
 
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const user = useStore((state) => state.user);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -54,143 +55,178 @@ function Navbar() {
   };
 
   return (
-    <Box bg="white">
-      <Flex maxW="7xl" px={4} align="center" h={16}>
-        <Box>
-          <a href="/">
-            <Image src={logo} alt="LOGO" h={5} mb={1} mr={2} />
-          </a>
-        </Box>
-        <Flex align="center" display={{ base: "none", md: "flex" }}>
-          <Button
-            variant="ghost"
-            colorScheme="black"
-            px={4}
-            py={2}
-            rounded="md"
-            fontSize="sm"
-            onClick={() => navigate("/job")}
-          >
-            Job
-          </Button>
-          {isLoggedIn && (
-            <Button
-              variant="ghost"
-              colorScheme="black"
-              px={4}
-              py={2}
-              rounded="md"
-              fontSize="sm"
-              onClick={handleCompany}
-            >
-              Company Profile
-            </Button>
-          )}
-          {isLoggedIn && (
-            <Button
-              variant="ghost"
-              colorScheme="black"
-              px={4}
-              py={2}
-              rounded="md"
-              fontSize="sm"
-              onClick={handleProfile}
-            >
-              My Profile
-            </Button>
-          )}
-        </Flex>
-        <Spacer />
-        <Button
-          display={{ base: "none", md: "flex" }}
-          bg="black"
-          color="mint"
-          fontWeight="bold"
-          px={4}
-          py={2}
-          rounded="full"
-          fontSize="sm"
-          onClick={isLoggedIn ? handleLogout : handleLogin}
-        >
-          {isLoggedIn ? "Logout" : "Login"}
-        </Button>
-        <Box display={{ base: "block", md: "none" }}>
-          <IconButton
-            variant="solid"
-            bgColor="black"
-            color="white"
-            rounded="md"
-            fontSize="xl"
-            aria-label="Open mobile menu"
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            onClick={handleClick}
-          />
-        </Box>
-      </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        <Box bg="white" py={2} px={4}>
-          <VStack align="flex-start" spacing={2}>
+      <Box className="bg-mint">
+        <Flex maxW="full" px={4} align="center" h={16}>
+          <Box>
+            <a href="/">
+              <Image src={logo} alt="LOGO" h={6} mb={1} mr={2}/>
+            </a>
+          </Box>
+          <Flex align="center">
+          {isLoggedIn && (
             <Button
               variant="ghost"
-              colorScheme="white"
-              w="full"
+              colorScheme="black"
+              fontWeight="regular"
               px={4}
               py={2}
               rounded="md"
-              fontSize={{ base: "md", md: "sm" }}
+              fontSize="md"
               onClick={() => navigate("/job")}
             >
-              Job
+              Jobs
             </Button>
+          )}
             {isLoggedIn && (
               <Button
                 variant="ghost"
-                colorScheme="white"
-                w="full"
+                colorScheme="black"
+                fontWeight="regular"
                 px={4}
                 py={2}
                 rounded="md"
-                fontSize={{ base: "md", md: "sm" }}
+                fontSize="md"
                 onClick={handleCompany}
               >
-                Company Profile
+                Companies
               </Button>
             )}
             {isLoggedIn && (
               <Button
                 variant="ghost"
-                colorScheme="white"
-                w="full"
+                colorScheme="black"
+                fontWeight="regular"
                 px={4}
                 py={2}
                 rounded="md"
-                fontSize={{ base: "md", md: "sm" }}
+                fontSize="md"
                 onClick={handleProfile}
               >
                 My Profile
               </Button>
             )}
-             <Button
-             
-          display={{ base: "md", md: "none" }}
-          bg="black"
-          color="mint"
-          fontWeight="bold"
-          px={4}
-          py={2}
-          mx={270}
-          my={5}
-          rounded="full"
-          fontSize="sm"
-          onClick={isLoggedIn ? handleLogout : handleLogin}
-        >
-          {isLoggedIn ? "Logout" : "Login"}
-        </Button>
-          </VStack>
-        </Box>
-      </Collapse>
-    </Box>
+            {["user"].includes(user.role) && ( // conditional for recruiter and admin */}
+           <Button
+           variant="ghost"
+           colorScheme="black"
+           fontWeight="regular"
+           px={4}
+           py={2}
+           rounded="md"
+           fontSize="md"
+           onClick={() => navigate("/job-apply-user")}
+         >
+           Applications
+          </Button>
+         )} 
+          </Flex>
+          <Spacer />
+          <Button
+            bg="black"
+            color="white"
+            fontWeight="semibold"
+            px={4}
+            py={2}
+            rounded="xl"
+            fontSize="md"
+            onClick={isLoggedIn ? handleLogout : handleLogin}
+          >
+            {isLoggedIn ? "Logout" : "Login"}
+          </Button>
+          <Box display={{ base: "block", md: "none" }}>
+            <IconButton
+              variant="ghost"
+              colorScheme="black"
+              rounded="md"
+              fontSize="sm"
+              aria-label="Open mobile menu"
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              onClick={handleClick}
+            />
+          </Box>
+        </Flex>
+
+        <Collapse in={isOpen} animateOpacity>
+          <Flex align="center">
+          {isLoggedIn && (
+            <Button
+              variant="ghost"
+              colorScheme="black"
+              fontWeight="regular"
+              px={4}
+              py={2}
+              rounded="md"
+              fontSize="md"
+              onClick={() => navigate("/job")}
+            >
+              Jobs
+            </Button>
+          )}
+            {isLoggedIn && (
+              <Button
+                variant="ghost"
+                colorScheme="black"
+                fontWeight="regular"
+                px={4}
+                py={2}
+                rounded="md"
+                fontSize="md"
+                onClick={handleCompany}
+              >
+                Companies
+              </Button>
+            )}
+            {isLoggedIn && (
+              <Button
+                variant="ghost"
+                colorScheme="black"
+                fontWeight="regular"
+                px={4}
+                py={2}
+                rounded="md"
+                fontSize="md"
+                onClick={handleProfile}
+              >
+                My Profile
+              </Button>
+            )}
+                       {["user"].includes(user.role) && ( // conditional for recruiter and admin */}
+          <button
+            onClick={() => navigate(`/job-apply-user`)}
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mt-[20px]"
+          >
+           Applications
+          </button>
+         )} 
+          </Flex>
+          <Spacer />
+          <Button
+            bg="black"
+            color="white"
+            fontWeight="semibold"
+            px={4}
+            py={2}
+            rounded="xl"
+            fontSize="md"
+            onClick={isLoggedIn ? handleLogout : handleLogin}
+          >
+            {isLoggedIn ? "Logout" : "Login"}
+          </Button>
+          <Box display={{ base: "block", md: "none" }}>
+            <IconButton
+              variant="ghost"
+              colorScheme="black"
+              rounded="md"
+              fontSize="sm"
+              aria-label="Open mobile menu"
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              onClick={handleClick}
+            />
+          </Box>
+        </Collapse>
+      </Box>
+    
   );
 }
 
