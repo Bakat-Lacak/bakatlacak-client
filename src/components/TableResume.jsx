@@ -18,7 +18,7 @@ import { IconButton } from "@chakra-ui/react";
 import { FaFileLines } from "react-icons/fa6";
 import { editUserProfile } from "../fetching/userProfile";
 
-export default function TableResume({ profile }) {
+export default function TableResume({ profile, fetchProfile }) {
 
   const [aboutMe, setAboutMe] = useState(profile.about_me)
   const [salary, setSalary] = useState(profile.salary_expectation)
@@ -41,6 +41,7 @@ export default function TableResume({ profile }) {
     showConfirmButton: false,
     timer: 1500
   });
+  fetchProfile()
   }
 
   return (
