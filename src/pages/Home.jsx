@@ -274,8 +274,9 @@ export default function Home() {
         </div>
         <div className="flex justify-center">
         <button
+          
           onClick={() => handleButton("/job")}
-          className="mt-20 inline-block uppercase rounded-full bg-white px-8 py-4 text-xl text-black transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+          className="mt-20 inline-block uppercase rounded-full bg-white px-8 py-4 text-xl text-black transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400 sm:my-10"
         >
           find your next job
         </button>
