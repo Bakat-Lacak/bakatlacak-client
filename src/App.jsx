@@ -20,6 +20,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import JobApply from "./pages/Jobs/JobApply";
 import JobApplyUser from "./pages/Jobs/JobApplyUser";
+import AllAppliedJob from "./pages/Jobs/Recruiter/AllAppliedJob";
+import AppliedJobByID from "./pages/Jobs/Recruiter/AppliedJobByID";
 function App() {
   return (
     <Router>
@@ -42,6 +44,9 @@ function App() {
           <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/job-apply/:id" element={<JobApply />} />
           <Route path="/job-apply-user" element={<JobApplyUser />} />
+          {/* Recruiter */}
+          <Route path="/all-applied-job" element={<AllAppliedJob />} />
+          <Route path="/applied-job/:id" element={<AppliedJobByID />} />
         </Routes>
         <Footer />
       </ChakraProvider>
