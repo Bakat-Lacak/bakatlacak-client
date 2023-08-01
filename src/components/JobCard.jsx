@@ -30,7 +30,6 @@ export default function JobCard({ job }) {
         <div className="py-1">
           <div className="flex justify-between">
             <h3 className="text-lg font-medium text-black">{job.title}</h3>
-            <h3 className="text-sm text-black pr-3">{LongDate(dateOnly)}</h3>
           </div>
           <div className="my-1 text-sm text-black">
             {convertToRupiah(job.salary_start)} -{" "}
@@ -45,6 +44,8 @@ export default function JobCard({ job }) {
           >
             Detail
           </button>
+
+          <h3 className="text-sm text-black pr-3">{LongDate(dateOnly)}</h3>
         </div>
       </div>
     </div>
